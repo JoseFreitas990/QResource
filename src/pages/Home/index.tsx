@@ -3,18 +3,13 @@ import React from 'react'
 import { style } from './styles'
 import { SafeAreaView } from 'react-native-safe-area-context'
 import { TextInput } from 'react-native-gesture-handler'
+import { HeaderBar } from '../../components'
 
 const Home = () => {
   return (
-    <SafeAreaView style={style.container}>
-      <View style={style.header}>
-        <Text>QResource</Text>
-        <View>
-          <TextInput placeholder='Search code...'/>
-        </View>
-      </View>
-      <Text>Home</Text>
-    </SafeAreaView>
+    <View style={style.container}>
+      <HeaderBar/>
+    </View>
   )
 }
 
