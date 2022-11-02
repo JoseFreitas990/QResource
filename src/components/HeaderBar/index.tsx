@@ -1,10 +1,17 @@
-import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, SafeAreaView, StyleSheet, TextInput, TouchableOpacity, Platform, StatusBar } from 'react-native'
 import React, { useState } from 'react'
 import { COLORS, SIZES } from '../../constants/GlobalStyles'
 
-const HeaderBar = () => {
 
-  const [input,setInput]= useState<string>("")
+type Props = {
+  input:string,
+  setInput: (value:string) => void,
+}
+
+const HeaderBar = (props:Props) => {
+
+  const {input,setInput} = props
+  
   return (
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>QResource</Text>
@@ -22,14 +29,14 @@ export default HeaderBar
 
 const styles = StyleSheet.create({
   container:{
-    height:150,
     width:"100%",
     backgroundColor:COLORS.primary,
     flexDirection:'column',
     borderBottomLeftRadius:35,
     borderBottomRightRadius:35,
     justifyContent:"flex-start",
-    alignItems:'center'
+    alignItems:'center',
+    paddingTop:Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
   header:{
     fontSize:SIZES.h1,
@@ -47,6 +54,7 @@ const styles = StyleSheet.create({
     backgroundColor:COLORS.lightGray3,
     paddingLeft:10,
     paddingRight:10,
+    marginBottom:10,
   },
   input:{
     flex:1,
