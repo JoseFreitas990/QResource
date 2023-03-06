@@ -3,40 +3,18 @@ import { StatusBar } from 'expo-status-bar';
 import { useEffect } from 'react';
 import { Platform, StyleSheet, Text, View } from 'react-native';
 import TabNavigator from './src/features/navigation/TabNavigator';
-import * as SQLite from 'expo-sqlite'
-
-
-function openDatabase() {
-  if(Platform.OS === "web"){
-    return{
-      transaction: () => {
-        return {
-          executeSql: () => {}
-        }
-      }
-    }
-  }
-
-  const db = SQLite.openDatabase("db.db");
-  return db
-}
-
-// const db = openDatabase()
+import * as SQLite from 'expo-sqlite';
+import DatabaseInit from './src/database/init';
 
 export default function App() {
-
-  // useEffect(() => {
-  //   db.transaction((tx) => {
-  //     tx.executeSql(
-  //       `create table if not exists codes (id integer primary key not null, title text, description text, value text,)`
-  //     )
-  //   })
-  // })
+  useEffect(() => {
+    new DatabaseInit();
+  }, []);
 
   return (
-      <NavigationContainer>
-          <TabNavigator/>
-      </NavigationContainer>
+    <NavigationContainer>
+      <TabNavigator />
+    </NavigationContainer>
   );
 }
 
