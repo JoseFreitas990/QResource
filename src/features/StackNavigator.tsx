@@ -1,14 +1,17 @@
 import { createStackNavigator } from '@react-navigation/stack';
 import { Create, Scan } from '../pages';
 
-const Stack = createStackNavigator();
+export type ScannerStackParamList = {
+  Scanner: undefined;
+  Create: { scannedData: string };
+};
+const ScanStack = createStackNavigator<ScannerStackParamList>();
 
 export function ScannerNavigator() {
   return (
-    <Stack.Navigator>
-      <Stack.Screen name="Scanner" component={Scan} />
-      <Stack.Screen name="Create" component={Create} />
-    
-    </Stack.Navigator>
+    <ScanStack.Navigator screenOptions={{ headerShown: false }}>
+      <ScanStack.Screen name="Scanner" component={Scan} />
+      <ScanStack.Screen name="Create" component={Create} />
+    </ScanStack.Navigator>
   );
 }
