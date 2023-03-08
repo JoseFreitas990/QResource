@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, Button, TextInput } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CodeService from '../../services/code.service';
 import { useNavigation, useRoute } from '@react-navigation/native';
@@ -8,6 +8,7 @@ import {
   CreateScreenRouteProp,
   HomeStackParamList,
 } from '../../features/StackNavigator';
+import getType from '../../utils/getType';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -16,6 +17,10 @@ const Create = () => {
   const navigation = useNavigation<HomeScreenProp>();
   const { scannedData } = route.params;
   const [name, setName] = useState<string>('');
+
+  useEffect(() => {
+    console.log(getType(scannedData));
+  }, []);
 
   const createCode = async () => {
     if (!name || name.length > 20) return;
@@ -28,6 +33,7 @@ const Create = () => {
       navigation.navigate('Home');
     });
   };
+
   return (
     <SafeAreaView style={styles.container}>
       <Text>Create</Text>

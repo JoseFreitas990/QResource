@@ -68,8 +68,10 @@ export interface IEvent {
 
 // ? GEO:Lat;Lon
 // ? https://maps.google.com/maps?q=lat,lon
+// ? http://maps.google.com/maps?q=lat,lon
+// ? https://www.google.com/maps/@39.822928,-7.488359,215m/data=!3m1!1e3?hl=pt-PT
+
 export interface ILocation {
-  // TODO
   latitude: number;
   longitude: number;
 }

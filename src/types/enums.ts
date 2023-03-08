@@ -9,4 +9,8 @@ export const CODE_TYPES = {
   ALARM: 'VALARM',
   CARD: 'VCARD',
   GEO: 'GEO',
+  GEOM: 'GEOM',
+  GEOM2: 'GEOM2',
+  TEXT: 'TEXT',
+  URL: 'URL',
 };
