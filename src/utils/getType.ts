@@ -5,7 +5,7 @@ export default function getType(data: string) {
   let type;
 
   if (checkIfHasHTTPS(firstElement)) {
-    type = checkIfIsUrlOrMaps(data);
+    type = checkIfIsUrlOrMaps(data.toUpperCase());
   } else {
     type = checkCodeType(firstElement);
   }
@@ -19,13 +19,13 @@ function splitAndReturnFirstElement(data: string) {
 }
 
 function checkIfHasHTTPS(type: string) {
-  const regEx = new RegExp('^(http|https)');
+  const regEx = new RegExp('^(HTTP|HTTPS)');
 
   return regEx.test(type);
 }
 
 function checkIfIsUrlOrMaps(data: string) {
-  const googleMapsRegEx = new RegExp('^(HTTP|HTTPS)://MAPS.GOOGLE.COM/MAPS');
+  const googleMapsRegEx = new RegExp('^(HTTP|HTTPS)://MAPS.GOOGLE.COM/');
   const googleMapsRegEx_2 = new RegExp('^(HTTP|HTTPS)://WWW.GOOGLE.COM/MAPS');
 
   if (googleMapsRegEx.test(data)) {
