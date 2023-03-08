@@ -1,6 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Create, Home, Scan } from '../pages';
+import { Create, Details, Home, Scan } from '../pages';
 import { RouteProp } from '@react-navigation/native';
+import { ICode } from '../types';
 
 export type ScannerStackParamList = {
   Scanner: undefined;
@@ -9,10 +10,12 @@ export type ScannerStackParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  Details: undefined;
+  Details: { codeData: ICode };
 };
 
 export type CreateScreenRouteProp = RouteProp<ScannerStackParamList, 'Create'>;
+
+export type DetailsScreenRouterProp = RouteProp<HomeStackParamList, 'Details'>;
 
 const ScanStack = createStackNavigator<ScannerStackParamList>();
 const HomeStack = createStackNavigator<HomeStackParamList>();
@@ -30,7 +33,7 @@ export function HomeNavigator() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
       <HomeStack.Screen name="Home" component={Home} />
-      <HomeStack.Screen name="Details" component={Create} />
+      <HomeStack.Screen name="Details" component={Details} />
     </HomeStack.Navigator>
   );
 }

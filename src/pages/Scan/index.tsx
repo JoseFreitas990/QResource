@@ -7,9 +7,9 @@ import {
   Platform,
   StatusBar,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
-import { useNavigation } from '@react-navigation/native';
+import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScannerStackParamList } from '../../features/StackNavigator';
 
@@ -19,6 +19,12 @@ const Scan = () => {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [scanned, setScanned] = useState<boolean>(false);
+
+  const isFocused = useIsFocused();
+
+  useEffect(() => {
+    setScanned(false);
+  }, [isFocused]);
 
   const navigator = useNavigation<ScannerScreenProp>();
 
@@ -30,7 +36,7 @@ const Scan = () => {
   const skipScan = ({ type, data }: any) => {
     setScanned(true);
     navigator.navigate('Create', {
-      scannedData: 'HELLO',
+      scannedData: 'BAOB AOBMA QWEM QWºE QW WQOEQWEWQº',
     });
   };
 
