@@ -1,6 +1,6 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Generate, Home, Scan } from '../../pages';
-import { HomeNavigator, ScannerNavigator } from '../StackNavigator';
+import { HomeNavigator, ScannerNavigator } from './StackNavigator';
 
 const Tab = createBottomTabNavigator();
 

@@ -17,7 +17,7 @@ import { useIsFocused, useNavigation } from '@react-navigation/native';
 import {
   DetailsScreenRouterProp,
   HomeStackParamList,
-} from '../../features/StackNavigator';
+} from '../../features/navigation/StackNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;

@@ -8,7 +8,7 @@ import {
   Share,
 } from 'react-native';
 import React, { useEffect, useRef } from 'react';
-import { DetailsScreenRouterProp } from '../../features/StackNavigator';
+import { DetailsScreenRouterProp } from '../../features/navigation/StackNavigator';
 import { useRoute } from '@react-navigation/native';
 import QRCode from 'react-native-qrcode-svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';

@@ -7,7 +7,7 @@ import { StackNavigationProp } from '@react-navigation/stack';
 import {
   CreateScreenRouteProp,
   HomeStackParamList,
-} from '../../features/StackNavigator';
+} from '../../features/navigation/StackNavigator';
 import getType from '../../utils/getType';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;

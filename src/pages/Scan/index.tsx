@@ -11,7 +11,7 @@ import React, { useEffect, useState } from 'react';
 import { Camera, CameraType } from 'expo-camera';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
-import { ScannerStackParamList } from '../../features/StackNavigator';
+import { ScannerStackParamList } from '../../features/navigation/StackNavigator';
 
 type ScannerScreenProp = StackNavigationProp<ScannerStackParamList>;
 

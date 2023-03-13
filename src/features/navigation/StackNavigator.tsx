@@ -1,7 +1,7 @@
 import { createStackNavigator } from '@react-navigation/stack';
-import { Create, Details, Home, Scan } from '../pages';
+import { Create, Details, Home, Scan } from '../../pages';
 import { RouteProp } from '@react-navigation/native';
-import { ICode } from '../types';
+import { ICode } from '../../types';
 
 export type ScannerStackParamList = {
   Scanner: undefined;
