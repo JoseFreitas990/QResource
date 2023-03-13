@@ -1,4 +1,4 @@
-import { ILocation, ISMS } from '../types';
+import { ILocation, IMail, ISMS, IWiFi } from '../types';
 import { split } from './utils';
 
 function getTypeParams(data: string, type: string) {}
@@ -45,4 +45,58 @@ function getGeoMParams2(data: string): ILocation {
   let longitude = parseFloat(lon);
 
   return { latitude, longitude };
+}
+
+function getMailToParams(data: string): IMail {
+  let to = data.substring(
+    data.indexOf('mailto:') + 1,
+    data.lastIndexOf('?subject=')
+  );
+
+  let subject = data.substring(
+    data.indexOf('?subject=') + 1,
+    data.lastIndexOf('?subject&body=')
+  );
+
+  let body = data.substring(data.indexOf('?subject&body=') + 1);
+
+  return { to, subject, body };
+}
+
+function getMatMsgToParams(data: string): IMail {
+  let to = data.substring(data.indexOf('TO:') + 1, data.lastIndexOf(';SUB:'));
+
+  let subject = data.substring(
+    data.indexOf(';SUB:') + 1,
+    data.lastIndexOf(';BODY:')
+  );
+
+  let body = data.substring(data.indexOf(';BODY:') + 1, data.lastIndexOf(';;'));
+
+  return { to, subject, body };
+}
+
+// TODO: SMTP
+
+function getWiFiToParams(data: string): IWiFi {
+  let networkType = '';
+  let name = '';
+  let password = '';
+  let hidden = false;
+
+  name = data.substring(data.indexOf(':S:') + 1, data.lastIndexOf(';T:'));
+
+  networkType = data.substring(
+    data.indexOf(';T:') + 1,
+    data.lastIndexOf(';P:')
+  );
+
+  password = data.substring(data.indexOf(';P:') + 1, data.lastIndexOf(';H:'));
+
+  if (
+    data.substring(data.indexOf(';H:') + 1, data.lastIndexOf(';;')) === 'true'
+  )
+    hidden = true;
+
+  return { networkType, name, password, hidden };
 }

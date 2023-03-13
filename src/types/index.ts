@@ -31,7 +31,7 @@ export interface ISMS {
 
 // ? WIFI:S:<SSID>;T:<WEP|WPA|blank>;P:<PASSWORD>;H:<true|false|blank>;;
 export interface IWiFi {
-  networkTyp?: string;
+  networkType?: string;
   name?: string;
   password?: string;
   hidden: boolean;
