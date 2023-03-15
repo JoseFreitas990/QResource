@@ -2,7 +2,7 @@ import { View, Text, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
 
-const GeoRender = () => {
+const GeoGen = () => {
   const { updateData } = useStore();
 
   const [lat, setLat] = useState('0');
@@ -37,4 +37,4 @@ const GeoRender = () => {
   );
 };
 
-export default GeoRender;
+export default GeoGen;

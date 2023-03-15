@@ -9,14 +9,20 @@ export default function useCode(code: string) {
   switch (type) {
     case CODE_TYPES.MATMSG:
       return useMatMsgCode(code);
+    case CODE_TYPES.TEL:
+      return useDirectCode(code);
     case CODE_TYPES.MAILTO:
-      return useMailToCode(code);
+      return useDirectCode(code);
     case CODE_TYPES.SMS:
       return useSmsCode(code);
     case CODE_TYPES.GEO:
       return useGeoCode(code);
-    case CODE_TYPES.GEOM || CODE_TYPES.GEOM2 || CODE_TYPES.URL:
-      return useLinkCode(code);
+    case CODE_TYPES.GEOM:
+      return useDirectCode(code);
+    case CODE_TYPES.GEOM2:
+      return useDirectCode(code);
+    case CODE_TYPES.URL:
+      return useDirectCode(code);
   }
 }
 
@@ -27,10 +33,8 @@ function useMatMsgCode(code: string) {
 
   Linking.openURL(scheme);
 }
-function useMailToCode(code: string) {
-  Linking.openURL(code);
-}
-function useLinkCode(code: string) {
+
+function useDirectCode(code: string) {
   Linking.openURL(code);
 }
 

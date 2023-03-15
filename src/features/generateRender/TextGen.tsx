@@ -4,29 +4,27 @@ import { TextInput } from 'react-native-gesture-handler';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
 
-const UrlRender = () => {
+const TextGen = () => {
   const { updateData } = useStore();
-  const [link, setLink] = useState('');
-
-  //TODO: ADD A FUNCTION THAT DETECTS IF THE TEXT GIVEN HAS HTTPS OR NOT
+  const [text, setText] = useState('');
 
   useEffect(() => {
-    updateData(link);
-  }, [link]);
+    updateData(text);
+  }, [text]);
 
   return (
     <View>
       <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>URL</Text>
+        <Text>Telephone</Text>
         <TextInput
-          placeholder="Link"
+          placeholder="Text"
           multiline
-          value={link}
-          onChange={(e) => setLink(e.nativeEvent.text)}
+          value={text}
+          onChange={(e) => setText(e.nativeEvent.text)}
         />
       </View>
     </View>
   );
 };
 
-export default UrlRender;
+export default TextGen;

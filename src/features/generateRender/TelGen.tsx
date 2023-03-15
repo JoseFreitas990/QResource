@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
 
-const TelRender = () => {
+const TelGen = () => {
   const { updateData } = useStore();
   const [tel, setTele] = useState('');
 
@@ -26,4 +26,4 @@ const TelRender = () => {
   );
 };
 
-export default TelRender;
+export default TelGen;

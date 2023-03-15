@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
 
-const EmailRender = () => {
+const EmailGen = () => {
   const { updateData } = useStore();
   const [to, setTo] = useState<string>('');
   const [subject, setSubject] = useState<string>('');
@@ -49,4 +49,4 @@ const EmailRender = () => {
   );
 };
 
-export default EmailRender;
+export default EmailGen;

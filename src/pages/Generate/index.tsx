@@ -9,19 +9,19 @@ import React, { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
 import { typeOfObjectsToGenerate } from '../../constants/generate';
 import { CODE_TYPES } from '../../types/enums';
-import TelRender from '../../features/generateRender/TelRender';
-import SmsRender from '../../features/generateRender/SmsRender';
-import TextRender from '../../features/generateRender/TextRender';
+import TelGen from '../../features/generateRender/TelGen';
+import SmsGen from '../../features/generateRender/SmsGen';
+import TextGen from '../../features/generateRender/TextGen';
 import CodeService from '../../services/code.service';
 import { ICode } from '../../types';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParamList } from '../../features/navigation/StackNavigator';
 import useStore from '../../hooks/useStore';
-import EmailRender from '../../features/generateRender/EmailRender';
-import UrlRender from '../../features/generateRender/UrlRender';
-import WifiRender from '../../features/generateRender/WiFiRender';
-import GeoRender from '../../features/generateRender/GeoRender';
+import EmailGen from '../../features/generateRender/EmailGen';
+import UrlGen from '../../features/generateRender/UrlGen';
+import WifiGen from '../../features/generateRender/WiFiGen';
+import GeoGen from '../../features/generateRender/GeoGen';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -34,18 +34,18 @@ const Generate = () => {
 
   function renderThisType() {
     if (activeType === CODE_TYPES.TEL) {
-      return <TelRender />;
+      return <TelGen />;
     } else if (activeType === CODE_TYPES.SMS) {
-      return <SmsRender />;
+      return <SmsGen />;
     } else if (activeType === CODE_TYPES.MATMSG) {
-      return <EmailRender />;
+      return <EmailGen />;
     } else if (activeType === CODE_TYPES.URL) {
-      return <UrlRender />;
+      return <UrlGen />;
     } else if (activeType === CODE_TYPES.WIFI) {
-      return <WifiRender />;
+      return <WifiGen />;
     } else if (activeType === CODE_TYPES.GEO) {
-      return <GeoRender />;
-    } else return <TextRender />;
+      return <SmsGen />;
+    } else return <TextGen />;
   }
 
   const generateCode = async () => {

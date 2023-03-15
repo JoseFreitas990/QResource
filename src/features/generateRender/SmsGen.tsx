@@ -2,7 +2,7 @@ import { View, Text, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
 
-const SmsRender = () => {
+const SmsGen = () => {
   const { updateData } = useStore();
 
   const [to, setTo] = useState('');
@@ -36,4 +36,4 @@ const SmsRender = () => {
   );
 };
 
-export default SmsRender;
+export default SmsGen;

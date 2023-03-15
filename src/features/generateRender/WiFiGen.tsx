@@ -4,7 +4,7 @@ import { TextInput } from 'react-native-gesture-handler';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
 
-const WifiRender = () => {
+const WifiGen = () => {
   const { updateData } = useStore();
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
@@ -54,4 +54,4 @@ const WifiRender = () => {
   );
 };
 
-export default WifiRender;
+export default WifiGen;
