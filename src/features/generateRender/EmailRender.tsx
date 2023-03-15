@@ -12,7 +12,7 @@ const EmailRender = () => {
 
   useEffect(() => {
     updateData(
-      `MATMSG:TO:${removeWhiteSpaces(to)};SUB:${subject};BODY:${body};;`
+      `mailto:${removeWhiteSpaces(to)}?subject=${subject}&body=${body}`
     );
   }, [to, subject, body]);
 

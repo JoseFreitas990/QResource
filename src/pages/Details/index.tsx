@@ -6,6 +6,7 @@ import {
   Platform,
   PermissionsAndroid,
   Share,
+  Linking,
 } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { DetailsScreenRouterProp } from '../../features/navigation/StackNavigator';
@@ -23,9 +24,22 @@ const Details = () => {
   let svg = useRef(null);
   let dataUrl = '';
 
+  const scheme = Platform.select({
+    ios: 'maps:0,0?q=',
+    android: 'geo:0,0?q=',
+  });
+  const latLng = `41.129086,-8.562188`;
+  const label = 'Custom ok';
+  const url = Platform.select({
+    ios: `${scheme}${label}@${latLng}`,
+    android: `${scheme}${latLng}(${label})`,
+  });
+
   useEffect(() => {
     generateQR();
   }, []);
+
+  const useCode = () => {};
 
   const generateQR = () => {
     // @ts-ignore
@@ -68,7 +82,7 @@ const Details = () => {
     <SafeAreaView>
       <Text>{codeData.name}</Text>
       <Text>{codeData.data}</Text>
-      <Button title="SAVE THE CODE" />
+      <Button title="USE THE CODE" onPress={useCode} />
       <TouchableOpacity
         style={{ height: 30, marginVertical: 20, backgroundColor: 'yellow' }}
       >
@@ -76,6 +90,7 @@ const Details = () => {
       </TouchableOpacity>
 
       <View style={{ backgroundColor: 'red' }}>
+        <Text>{codeData.data}</Text>
         <QRCode
           value={codeData.data}
           backgroundColor="transparent"

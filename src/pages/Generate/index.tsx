@@ -21,6 +21,7 @@ import useStore from '../../hooks/useStore';
 import EmailRender from '../../features/generateRender/EmailRender';
 import UrlRender from '../../features/generateRender/UrlRender';
 import WifiRender from '../../features/generateRender/WiFiRender';
+import GeoRender from '../../features/generateRender/GeoRender';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -42,6 +43,8 @@ const Generate = () => {
       return <UrlRender />;
     } else if (activeType === CODE_TYPES.WIFI) {
       return <WifiRender />;
+    } else if (activeType === CODE_TYPES.GEO) {
+      return <GeoRender />;
     } else return <TextRender />;
   }
 

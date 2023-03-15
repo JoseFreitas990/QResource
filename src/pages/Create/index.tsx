@@ -1,4 +1,11 @@
-import { View, Text, SafeAreaView, Button, TextInput } from 'react-native';
+import {
+  View,
+  Text,
+  SafeAreaView,
+  Button,
+  TextInput,
+  Platform,
+} from 'react-native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CodeService from '../../services/code.service';

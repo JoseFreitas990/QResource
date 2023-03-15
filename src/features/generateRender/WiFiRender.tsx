@@ -1,4 +1,4 @@
-import { View, Text } from 'react-native';
+import { View, Text, Switch } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import useStore from '../../hooks/useStore';
@@ -6,44 +6,49 @@ import { removeWhiteSpaces } from '../../utils/utils';
 
 const WifiRender = () => {
   const { updateData } = useStore();
-  const [to, setTo] = useState<string>('');
-  const [subject, setSubject] = useState<string>('');
-  const [body, setBody] = useState<string>('');
+  const [name, setName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [type, setType] = useState<'WEP' | 'WPA' | ''>('');
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
     updateData(
-      `MATMSG:TO:${removeWhiteSpaces(to)};SUB:${subject};BODY:${body};;`
+      `WIFI:S:${removeWhiteSpaces(
+        name
+      )};T:${type};P:${password};H:${!visible};;`
     );
-  }, [to, subject, body]);
+  }, [name, password, type]);
 
   return (
     <View>
       <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>To</Text>
+        <Text>name</Text>
         <TextInput
           placeholder="To"
           multiline
-          value={to}
-          onChange={(e) => setTo(e.nativeEvent.text)}
+          value={name}
+          onChange={(e) => setName(e.nativeEvent.text)}
         />
       </View>
       <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Subject</Text>
+        <Text>password</Text>
         <TextInput
           placeholder="Subject"
           multiline
-          value={subject}
-          onChange={(e) => setSubject(e.nativeEvent.text)}
+          value={password}
+          onChange={(e) => setPassword(e.nativeEvent.text)}
         />
       </View>
       <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Body</Text>
-        <TextInput
-          placeholder="Body"
-          multiline
-          value={body}
-          onChange={(e) => setBody(e.nativeEvent.text)}
-        />
+        <Text>Network Type</Text>
+        <TextInput placeholder="Body" multiline value={type} />
+      </View>
+      {/*  TODO: NETWORK TYPE */}
+      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
+        <Text>Visibility</Text>
+        <Text>{visible ? 'Visible' : 'Hidden'}</Text>
+
+        <Switch value={visible} onChange={() => setVisible(!visible)} />
       </View>
     </View>
   );
