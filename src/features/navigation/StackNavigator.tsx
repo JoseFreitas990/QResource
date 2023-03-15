@@ -10,7 +10,7 @@ export type ScannerStackParamList = {
 
 export type HomeStackParamList = {
   Home: undefined;
-  Details: { codeData: ICode };
+  Details: { code: ICode };
 };
 
 export type CreateScreenRouteProp = RouteProp<ScannerStackParamList, 'Create'>;

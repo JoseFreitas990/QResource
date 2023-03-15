@@ -1,8 +1,6 @@
 import { ILocation, IMail, ISMS, IWiFi } from '../types';
 import { split } from './utils';
 
-function getTypeParams(data: string, type: string) {}
-
 function getSMSParams(data: string): ISMS {
   let to = split(data, 1);
   let body = split(data, 2);
@@ -11,8 +9,15 @@ function getSMSParams(data: string): ISMS {
 }
 
 function getGeoParams(data: string): ILocation {
-  let latitude = parseInt(split(data, 1));
-  let longitude = parseInt(split(data, 2));
+  let wantedString = split(data, 1);
+
+  let latitude = parseFloat(
+    wantedString.substring(0, wantedString.lastIndexOf(','))
+  );
+
+  let longitude = parseFloat(
+    wantedString.substring(wantedString.indexOf(',') + 1)
+  );
 
   return { latitude, longitude };
 }
@@ -64,14 +69,14 @@ function getMailToParams(data: string): IMail {
 }
 
 function getMatMsgToParams(data: string): IMail {
-  let to = data.substring(data.indexOf('TO:') + 1, data.lastIndexOf(';SUB:'));
+  let to = data.substring(data.indexOf('TO:') + 3, data.lastIndexOf(';SUB:'));
 
   let subject = data.substring(
-    data.indexOf(';SUB:') + 1,
+    data.indexOf(';SUB:') + 5,
     data.lastIndexOf(';BODY:')
   );
 
-  let body = data.substring(data.indexOf(';BODY:') + 1, data.lastIndexOf(';;'));
+  let body = data.substring(data.indexOf(';BODY:') + 6, data.lastIndexOf(';;'));
 
   return { to, subject, body };
 }
@@ -100,3 +105,13 @@ function getWiFiToParams(data: string): IWiFi {
 
   return { networkType, name, password, hidden };
 }
+
+export {
+  getWiFiToParams,
+  getSMSParams,
+  getGeoMParams,
+  getGeoMParams2,
+  getGeoParams,
+  getMailToParams,
+  getMatMsgToParams,
+};

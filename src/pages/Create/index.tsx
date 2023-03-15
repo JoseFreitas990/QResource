@@ -1,11 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Button,
-  TextInput,
-  Platform,
-} from 'react-native';
+import { Text, SafeAreaView, Button, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CodeService from '../../services/code.service';
@@ -53,7 +46,6 @@ const Create = () => {
           width: '50%',
         }}
       />
-      <Button onPress={() => console.log(scannedData)} title="LER DATA" />
 
       <Button onPress={createCode} title="Criar código" />
     </SafeAreaView>

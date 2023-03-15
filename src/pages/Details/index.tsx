@@ -1,13 +1,4 @@
-import {
-  View,
-  Text,
-  SafeAreaView,
-  Button,
-  Platform,
-  PermissionsAndroid,
-  Share,
-  Linking,
-} from 'react-native';
+import { View, Text, SafeAreaView, Button, Platform } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { DetailsScreenRouterProp } from '../../features/navigation/StackNavigator';
 import { useRoute } from '@react-navigation/native';
@@ -15,31 +6,18 @@ import QRCode from 'react-native-qrcode-svg';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system';
-import * as Permissions from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
+import useCode from '../../utils/useCode';
 
 const Details = () => {
   const route = useRoute<DetailsScreenRouterProp>();
-  const { codeData } = route.params;
+  const { code } = route.params;
   let svg = useRef(null);
   let dataUrl = '';
-
-  const scheme = Platform.select({
-    ios: 'maps:0,0?q=',
-    android: 'geo:0,0?q=',
-  });
-  const latLng = `41.129086,-8.562188`;
-  const label = 'Custom ok';
-  const url = Platform.select({
-    ios: `${scheme}${label}@${latLng}`,
-    android: `${scheme}${latLng}(${label})`,
-  });
 
   useEffect(() => {
     generateQR();
   }, []);
-
-  const useCode = () => {};
 
   const generateQR = () => {
     // @ts-ignore
@@ -78,11 +56,12 @@ const Details = () => {
       console.log(error);
     }
   };
+
   return (
     <SafeAreaView>
-      <Text>{codeData.name}</Text>
-      <Text>{codeData.data}</Text>
-      <Button title="USE THE CODE" onPress={useCode} />
+      <Text>{code.name}</Text>
+      <Text>{code.data}</Text>
+      <Button title="USE THE CODE" onPress={() => useCode(code.data)} />
       <TouchableOpacity
         style={{ height: 30, marginVertical: 20, backgroundColor: 'yellow' }}
       >
@@ -90,17 +69,16 @@ const Details = () => {
       </TouchableOpacity>
 
       <View style={{ backgroundColor: 'red' }}>
-        <Text>{codeData.data}</Text>
+        <Text>{code.data}</Text>
         <QRCode
-          value={codeData.data}
+          value={code.data}
           backgroundColor="transparent"
           getRef={(c) => (svg = c)}
         />
       </View>
 
-      <Button onPress={() => generateQR()} title="GENERATE" />
       <Button onPress={handleSave} title="SAVE" />
-      <Button onPress={handleShare} title="share" />
+      <Button onPress={handleShare} title="SHARE" />
     </SafeAreaView>
   );
 };

@@ -28,7 +28,7 @@ const GeoRender = () => {
         <TextInput
           placeholder="Longitude"
           multiline
-          keyboardType="decimal-pad"
+          keyboardType="numbers-and-punctuation"
           value={lon}
           onChange={(e) => setLon(e.nativeEvent.text)}
         />

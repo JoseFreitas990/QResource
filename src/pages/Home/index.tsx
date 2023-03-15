@@ -45,7 +45,7 @@ const Home = () => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              onPress={() => navigation.navigate('Details', { codeData: item })}
+              onPress={() => navigation.navigate('Details', { code: item })}
               style={{ backgroundColor: 'red', marginVertical: 10, height: 50 }}
             >
               <Text>{item.data}</Text>
