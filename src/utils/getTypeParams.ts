@@ -89,17 +89,17 @@ function getWiFiToParams(data: string): IWiFi {
   let password = '';
   let hidden = false;
 
-  name = data.substring(data.indexOf(':S:') + 1, data.lastIndexOf(';T:'));
+  name = data.substring(data.indexOf(':S:') + 3, data.lastIndexOf(';T:'));
 
   networkType = data.substring(
-    data.indexOf(';T:') + 1,
+    data.indexOf(';T:') + 3,
     data.lastIndexOf(';P:')
   );
 
-  password = data.substring(data.indexOf(';P:') + 1, data.lastIndexOf(';H:'));
+  password = data.substring(data.indexOf(';P:') + 3, data.lastIndexOf(';H:'));
 
   if (
-    data.substring(data.indexOf(';H:') + 1, data.lastIndexOf(';;')) === 'true'
+    data.substring(data.indexOf(';H:') + 3, data.lastIndexOf(';;')) === 'true'
   )
     hidden = true;
 

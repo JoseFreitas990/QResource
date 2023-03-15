@@ -8,7 +8,7 @@ const WifiGen = () => {
   const { updateData } = useStore();
   const [name, setName] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [type, setType] = useState<'WEP' | 'WPA' | ''>('');
+  const [type, setType] = useState<'WEP' | 'WPA' | ''>('WPA');
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {

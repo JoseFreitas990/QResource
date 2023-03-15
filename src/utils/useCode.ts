@@ -1,6 +1,11 @@
 import { Linking, Platform } from 'react-native';
 import getType from './getType';
-import { getGeoParams, getMatMsgToParams, getSMSParams } from './getTypeParams';
+import {
+  getGeoParams,
+  getMatMsgToParams,
+  getSMSParams,
+  getWiFiToParams,
+} from './getTypeParams';
 import { CODE_TYPES } from '../types/enums';
 
 export default function useCode(code: string) {
@@ -23,7 +28,13 @@ export default function useCode(code: string) {
       return useDirectCode(code);
     case CODE_TYPES.URL:
       return useDirectCode(code);
+    case CODE_TYPES.WIFI:
+      return useWiFiCode(code);
   }
+}
+
+function useWiFiCode(code: string) {
+  let { name, password, hidden, networkType } = getWiFiToParams(code);
 }
 
 function useMatMsgCode(code: string) {
@@ -35,6 +46,7 @@ function useMatMsgCode(code: string) {
 }
 
 function useDirectCode(code: string) {
+  console.log(code);
   Linking.openURL(code);
 }
 
