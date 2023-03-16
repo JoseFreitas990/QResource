@@ -19,6 +19,7 @@ import {
   HomeStackParamList,
 } from '../../features/navigation/StackNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
+import CodeCard from '../../components/CodeCard';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -39,6 +40,7 @@ const Home = () => {
   return (
     <View style={style.container}>
       <HeaderBar input={filterInput} setInput={setFilterInput} />
+      <CodeCard />
       <FlatList
         data={codes}
         keyExtractor={(item: ICode) => item.id.toString()}
