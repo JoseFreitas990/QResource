@@ -5,6 +5,7 @@ import { Platform, StyleSheet, Text, View } from 'react-native';
 import TabNavigator from './src/features/navigation/TabNavigator';
 import * as SQLite from 'expo-sqlite';
 import DatabaseInit from './src/database/init';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 export default function App() {
   useEffect(() => {
@@ -13,7 +14,9 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <TabNavigator />
+      <SafeAreaProvider>
+        <TabNavigator />
+      </SafeAreaProvider>
     </NavigationContainer>
   );
 }

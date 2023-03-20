@@ -8,6 +8,9 @@ import * as Sharing from 'expo-sharing';
 import * as FileSystem from 'expo-file-system';
 import * as MediaLibrary from 'expo-media-library';
 import useCode from '../../utils/useCode';
+import styles from './styles';
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS, SIZES } from '../../constants/GlobalStyles';
 
 const Details = () => {
   const route = useRoute<DetailsScreenRouterProp>();
@@ -58,28 +61,40 @@ const Details = () => {
   };
 
   return (
-    <SafeAreaView>
-      <Text>{code.name}</Text>
-      <Text>{code.data}</Text>
-      <Button title="USE THE CODE" onPress={() => useCode(code.data)} />
-      <TouchableOpacity
-        style={{ height: 30, marginVertical: 20, backgroundColor: 'yellow' }}
+    <View style={styles.container}>
+      <LinearGradient
+        colors={[COLORS.orange, COLORS.yellow]}
+        start={[0.3, 0]}
+        style={styles.QRContainer}
       >
-        <Text>SHARE THE CODE</Text>
-      </TouchableOpacity>
-
-      <View style={{ backgroundColor: 'red' }}>
-        <Text>{code.data}</Text>
         <QRCode
           value={code.data}
+          size={225}
+          color="rgba(25,25,25,1)"
           backgroundColor="transparent"
           getRef={(c) => (svg = c)}
         />
-      </View>
+      </LinearGradient>
 
-      <Button onPress={handleSave} title="SAVE" />
-      <Button onPress={handleShare} title="SHARE" />
-    </SafeAreaView>
+      <View style={styles.informationContainer}>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>{code.name}</Text>
+          <TouchableOpacity>
+            <Text>SH</Text>
+          </TouchableOpacity>
+        </View>
+        <Text>{code.data}</Text>
+      </View>
+      <View style={styles.buttonsContainer}>
+        <TouchableOpacity
+          style={styles.buttonSecondary}
+          onPress={handleSave}
+        ></TouchableOpacity>
+        <TouchableOpacity style={styles.buttonPrimary} onPress={handleShare}>
+          <Text>Open ...</Text>
+        </TouchableOpacity>
+      </View>
+    </View>
   );
 };
 

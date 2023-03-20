@@ -3,11 +3,9 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 
 export default StyleSheet.create({
   card: {
-    marginVertical: 15,
     borderRadius: SIZES.h3,
-    width: '80%',
-    height: '8.5%',
-    backgroundColor: 'red',
+    width: '88%',
+    height: '100%',
     flexDirection: 'row',
   },
   infoContainer: {
@@ -17,6 +15,10 @@ export default StyleSheet.create({
     borderColor: COLORS.black,
     justifyContent: 'center',
     paddingLeft: 20,
+    overflow: 'hidden',
+    borderTopRightRadius: SIZES.h3,
+    borderBottomRightRadius: SIZES.h3,
+
     height: '100%',
     backgroundColor: COLORS.white,
   },
@@ -24,14 +26,16 @@ export default StyleSheet.create({
     width: '20%',
     alignItems: 'center',
     justifyContent: 'center',
+
     height: '100%',
-    backgroundColor: 'trasparent',
+    backgroundColor: 'transparent',
   },
   name: {
     fontWeight: '600',
     fontSize: SIZES.h3,
   },
   value: {
+    width: '75%',
     fontSize: SIZES.h4,
     fontWeight: '400',
   },

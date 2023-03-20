@@ -23,6 +23,16 @@ import CodeCard from '../../components/CodeCard';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
+const codeExample: ICode[] = [
+  {
+    data: '15151',
+    date: new Date(),
+    id: 15,
+    name: 'bqbqbq',
+    type: '15',
+  },
+];
+
 const Home = () => {
   const [codes, setCodes] = useState([]);
   const isFocused = useIsFocused();
@@ -32,6 +42,7 @@ const Home = () => {
       setCodes(response._array);
     });
   };
+
   useEffect(() => {
     getAllCodes();
   }, [isFocused]);
@@ -40,22 +51,30 @@ const Home = () => {
   return (
     <View style={style.container}>
       <HeaderBar input={filterInput} setInput={setFilterInput} />
-      <CodeCard />
       <FlatList
+        style={{
+          width: '90%',
+          marginTop: 10,
+        }}
+        showsHorizontalScrollIndicator={false}
         data={codes}
         keyExtractor={(item: ICode) => item.id.toString()}
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
               onPress={() => navigation.navigate('Details', { code: item })}
-              style={{ backgroundColor: 'red', marginVertical: 10, height: 50 }}
+              style={{
+                height: 75,
+                marginVertical: 10,
+                width: '100%',
+                alignItems: 'center',
+              }}
             >
-              <Text>{item.data}</Text>
+              <CodeCard name={item.name} value={item.data} />
             </TouchableOpacity>
           );
         }}
       />
-      <Button onPress={() => console.log(codes)} title="console log" />
     </View>
   );
 };
