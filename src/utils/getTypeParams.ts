@@ -54,16 +54,16 @@ function getGeoMParams2(data: string): ILocation {
 
 function getMailToParams(data: string): IMail {
   let to = data.substring(
-    data.indexOf('mailto:') + 1,
+    data.indexOf('mailto:') + 7,
     data.lastIndexOf('?subject=')
   );
 
   let subject = data.substring(
-    data.indexOf('?subject=') + 1,
-    data.lastIndexOf('?subject&body=')
+    data.indexOf('?subject=') + 9,
+    data.lastIndexOf('&body=')
   );
 
-  let body = data.substring(data.indexOf('?subject&body=') + 1);
+  let body = data.substring(data.indexOf('&body=') + 14);
 
   return { to, subject, body };
 }

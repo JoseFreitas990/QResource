@@ -1,11 +1,23 @@
 import { View, Text } from 'react-native';
-import React from 'react';
+import React, { Fragment } from 'react';
+import InputValue from '../../components/InputValue';
+import { getMailToParams } from '../../utils/getTypeParams';
 
-const EmailInputs = () => {
+interface EmailInputProps {
+  code: string;
+  type?: string;
+}
+const EmailInputs = (props: EmailInputProps) => {
+  const { code } = props;
+
+  const params = getMailToParams(code);
+
   return (
-    <View>
-      <Text>EmailInputs</Text>
-    </View>
+    <Fragment>
+      <InputValue header="To" value={params.to} />
+      <InputValue header="Subject" value={params.body} />
+      <InputValue header="Body" value={params.subject} />
+    </Fragment>
   );
 };
 

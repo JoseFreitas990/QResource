@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, Button, Platform } from 'react-native';
+import { View, Text, SafeAreaView, Platform } from 'react-native';
 import React, { useEffect, useRef } from 'react';
 import { DetailsScreenRouterProp } from '../../features/navigation/StackNavigator';
 import { useRoute } from '@react-navigation/native';
@@ -11,7 +11,9 @@ import useCode from '../../utils/useCode';
 import styles from './styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
-
+import Button from '../../components/Button';
+import EmailInputs from '../../features/inputsRender/EmailInputs';
+import getType from '../../utils/getType';
 const Details = () => {
   const route = useRoute<DetailsScreenRouterProp>();
   const { code } = route.params;
@@ -60,6 +62,11 @@ const Details = () => {
     }
   };
 
+  function renderInputs() {
+    return <EmailInputs code={code.data} />;
+    // return <Text>{typeof code.data}</Text>;
+  }
+
   return (
     <View style={styles.container}>
       <LinearGradient
@@ -83,16 +90,12 @@ const Details = () => {
             <Text>SH</Text>
           </TouchableOpacity>
         </View>
-        <Text>{code.data}</Text>
+        {renderInputs()}
       </View>
       <View style={styles.buttonsContainer}>
-        <TouchableOpacity
-          style={styles.buttonSecondary}
-          onPress={handleSave}
-        ></TouchableOpacity>
-        <TouchableOpacity style={styles.buttonPrimary} onPress={handleShare}>
-          <Text>Open ...</Text>
-        </TouchableOpacity>
+        <Text>{getType(code.data)}</Text>
+        <Button secondary label="Save to Gallery" />
+        <Button label="Open Link" />
       </View>
     </View>
   );

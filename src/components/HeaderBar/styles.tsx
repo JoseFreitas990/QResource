@@ -4,7 +4,7 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 export default StyleSheet.create({
   container: {
     width: '100%',
-    backgroundColor: COLORS.red,
+    backgroundColor: COLORS.primary,
     flexDirection: 'column',
     borderBottomLeftRadius: 35,
     borderBottomRightRadius: 35,
