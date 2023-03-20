@@ -1,5 +1,5 @@
-import { View, Text, SafeAreaView, Platform } from 'react-native';
-import React, { useEffect, useRef } from 'react';
+import { View, Text, SafeAreaView, Platform, Image } from 'react-native';
+import React, { useEffect, useRef, useState } from 'react';
 import { DetailsScreenRouterProp } from '../../features/navigation/StackNavigator';
 import { useRoute } from '@react-navigation/native';
 import QRCode from 'react-native-qrcode-svg';
@@ -14,9 +14,14 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 import Button from '../../components/Button';
 import EmailInputs from '../../features/inputsRender/EmailInputs';
 import getType from '../../utils/getType';
+import { CODE_TYPES } from '../../types/enums';
+import TelInputs from '../../features/inputsRender/TelInputs';
+import SmsInputs from '../../features/inputsRender/SmsInputs';
 const Details = () => {
   const route = useRoute<DetailsScreenRouterProp>();
   const { code } = route.params;
+
+  const [type, setType] = useState(getType(code.data));
   let svg = useRef(null);
   let dataUrl = '';
 
@@ -63,7 +68,12 @@ const Details = () => {
   };
 
   function renderInputs() {
-    return <EmailInputs code={code.data} />;
+    if (type === CODE_TYPES.MAILTO) return <EmailInputs code={code.data} />;
+
+    if (type === CODE_TYPES.TEL) return <TelInputs code={code.data} />;
+
+    if (type === CODE_TYPES.SMS) return <SmsInputs code={code.data} />;
+
     // return <Text>{typeof code.data}</Text>;
   }
 
@@ -87,13 +97,20 @@ const Details = () => {
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{code.name}</Text>
           <TouchableOpacity>
-            <Text>SH</Text>
+            <Image
+              style={{
+                resizeMode: 'contain',
+                width: 20,
+                height: 20,
+                marginLeft: 5,
+              }}
+              source={require('../../../assets/share.png')}
+            />
           </TouchableOpacity>
         </View>
         {renderInputs()}
       </View>
       <View style={styles.buttonsContainer}>
-        <Text>{getType(code.data)}</Text>
         <Button secondary label="Save to Gallery" />
         <Button label="Open Link" />
       </View>

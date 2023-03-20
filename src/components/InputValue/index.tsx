@@ -1,6 +1,7 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
 import styles from './styles';
+import { COLORS } from '../../constants/GlobalStyles';
 
 interface InputValueProps {
   header: string;
@@ -17,14 +18,17 @@ const InputValue = (props: InputValueProps) => {
           <Text style={styles.text}>{value}</Text>
         </View>
       </View>
-      <View
+
+      <Image
         style={{
+          resizeMode: 'contain',
           width: 40,
           height: 40,
-          backgroundColor: 'red',
           marginRight: 10,
+          tintColor: COLORS.black,
         }}
-      ></View>
+        source={require('../../../assets/copy.png')}
+      />
     </View>
   );
 };

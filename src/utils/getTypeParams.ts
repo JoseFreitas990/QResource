@@ -1,4 +1,4 @@
-import { ILocation, IMail, ISMS, IWiFi } from '../types';
+import { ILocation, IMail, IPhone, ISMS, IWiFi } from '../types';
 import { split } from './utils';
 
 function getSMSParams(data: string): ISMS {
@@ -6,6 +6,12 @@ function getSMSParams(data: string): ISMS {
   let body = split(data, 2);
 
   return { to, body };
+}
+
+function getTelParams(data: string): IPhone {
+  let number = split(data, 1);
+
+  return { number };
 }
 
 function getGeoParams(data: string): ILocation {
@@ -109,6 +115,7 @@ function getWiFiToParams(data: string): IWiFi {
 export {
   getWiFiToParams,
   getSMSParams,
+  getTelParams,
   getGeoMParams,
   getGeoMParams2,
   getGeoParams,
