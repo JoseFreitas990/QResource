@@ -1,9 +1,11 @@
-import { StyleSheet } from 'react-native';
+import { Platform, StyleSheet } from 'react-native';
+import { SIZES } from '../../constants/GlobalStyles';
 
 export const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingBottom: 90,
+    paddingBottom:
+      Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 10,
   },
 });

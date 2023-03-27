@@ -17,6 +17,8 @@ import getType from '../../utils/getType';
 import { CODE_TYPES } from '../../types/enums';
 import TelInputs from '../../features/inputsRender/TelInputs';
 import SmsInputs from '../../features/inputsRender/SmsInputs';
+import GeoInputs from '../../features/inputsRender/GeoInputs';
+import UrlInputs from '../../features/inputsRender/UrlInputs';
 const Details = () => {
   const route = useRoute<DetailsScreenRouterProp>();
   const { code } = route.params;
@@ -73,6 +75,16 @@ const Details = () => {
     if (type === CODE_TYPES.TEL) return <TelInputs code={code.data} />;
 
     if (type === CODE_TYPES.SMS) return <SmsInputs code={code.data} />;
+
+    if (type === CODE_TYPES.GEO) return <GeoInputs code={code.data} />;
+
+    if (
+      type === CODE_TYPES.URL ||
+      CODE_TYPES.GEOM ||
+      CODE_TYPES.GEOM2 ||
+      CODE_TYPES.TEXT
+    )
+      return <UrlInputs code={code.data} />;
 
     // return <Text>{typeof code.data}</Text>;
   }

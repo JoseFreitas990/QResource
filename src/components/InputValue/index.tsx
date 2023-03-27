@@ -22,8 +22,8 @@ const InputValue = (props: InputValueProps) => {
       <Image
         style={{
           resizeMode: 'contain',
-          width: 40,
-          height: 40,
+          width: 35,
+          height: 35,
           marginRight: 10,
           tintColor: COLORS.black,
         }}

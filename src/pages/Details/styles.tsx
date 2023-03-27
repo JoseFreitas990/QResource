@@ -6,7 +6,7 @@ export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    // paddingBottom: Platform.OS === 'ios' ? height / 8.5 : height / 10,
+    paddingBottom: Platform.OS === 'ios' ? height / 8.5 : height / 10,
   },
 
   QRContainer: {

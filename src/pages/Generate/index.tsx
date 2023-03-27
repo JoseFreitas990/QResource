@@ -44,7 +44,7 @@ const Generate = () => {
     } else if (activeType === CODE_TYPES.WIFI) {
       return <WifiGen />;
     } else if (activeType === CODE_TYPES.GEO) {
-      return <SmsGen />;
+      return <GeoGen />;
     } else return <TextGen />;
   }
 

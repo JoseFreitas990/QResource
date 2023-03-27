@@ -19,6 +19,10 @@ export const COLORS = {
   transparentBlack: 'rgba(0, 0, 0, 0.4)',
   transparent: 'transparent',
 };
+
+const screenHeight = Dimensions.get('screen').height;
+const windowHeight = Dimensions.get('window').height;
+const navbarHeight = screenHeight - windowHeight;
 export const SIZES = {
   // global sizes
   base: 8,
@@ -41,6 +45,8 @@ export const SIZES = {
   // app dimensions
   width,
   height,
+
+  navbar: navbarHeight,
 };
 export const FONTS = {
   largeTitle: { fontFamily: 'Roboto-Black', fontSize: SIZES.largeTitle },
