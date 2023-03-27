@@ -2,6 +2,7 @@ import { View, Text, TextInput, Button } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
+import TextInputCustom from '../../components/TextInputCustom';
 
 const TelGen = () => {
   const { updateData } = useStore();
@@ -13,6 +14,7 @@ const TelGen = () => {
 
   return (
     <View style={{ paddingTop: 20 }}>
+      <TextInputCustom placeholder="Telephone" />
       <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
         <Text>Telephone</Text>
         <TextInput

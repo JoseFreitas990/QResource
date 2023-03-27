@@ -1,6 +1,5 @@
-import { View, Text, Switch } from 'react-native';
+import { View, Text, Switch, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { TextInput } from 'react-native-gesture-handler';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
 
