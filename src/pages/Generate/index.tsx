@@ -22,6 +22,10 @@ import EmailGen from '../../features/generateRender/EmailGen';
 import UrlGen from '../../features/generateRender/UrlGen';
 import WifiGen from '../../features/generateRender/WiFiGen';
 import GeoGen from '../../features/generateRender/GeoGen';
+import { HeaderBar } from '../../components';
+import styles from './styles';
+import { LinearGradient } from 'expo-linear-gradient';
+import { COLORS } from '../../constants/GlobalStyles';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -62,7 +66,8 @@ const Generate = () => {
   };
 
   return (
-    <SafeAreaView>
+    <View>
+      <HeaderBar input={''} setInput={() => ''} />
       <Text>Aqui {generatingData}</Text>
       <FlatList
         data={typeOfObjectsToGenerate}
@@ -71,23 +76,23 @@ const Generate = () => {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              style={{
-                marginTop: 50,
-                marginHorizontal: 15,
-                height: 50,
-                width: 50,
-                backgroundColor: 'orange',
-              }}
+              style={styles.itemTypeContainer}
               onPress={() => setActiveType(item.type)}
             >
-              <Text>{item.title}</Text>
+              <LinearGradient
+                style={styles.linearContainer}
+                colors={[COLORS.red, COLORS.black]}
+              >
+                <View style={styles.icon}></View>
+                <Text style={styles.typeText}>{item.title}</Text>
+              </LinearGradient>
             </TouchableOpacity>
           );
         }}
       />
       {renderThisType()}
       <Button title="Generate" onPress={generateCode} />
-    </SafeAreaView>
+    </View>
   );
 };
 

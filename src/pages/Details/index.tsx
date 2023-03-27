@@ -80,13 +80,11 @@ const Details = () => {
 
     if (
       type === CODE_TYPES.URL ||
-      CODE_TYPES.GEOM ||
-      CODE_TYPES.GEOM2 ||
-      CODE_TYPES.TEXT
+      type === CODE_TYPES.GEOM ||
+      type === CODE_TYPES.GEOM2 ||
+      type === CODE_TYPES.TEXT
     )
       return <UrlInputs code={code.data} />;
-
-    // return <Text>{typeof code.data}</Text>;
   }
 
   return (

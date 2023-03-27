@@ -11,6 +11,7 @@ import {
 import React, { useState } from 'react';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
 import styles from './styles';
+import { LinearGradient } from 'expo-linear-gradient';
 
 type Props = {
   input: string;
