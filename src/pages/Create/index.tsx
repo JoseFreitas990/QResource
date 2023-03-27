@@ -30,7 +30,7 @@ const Create = () => {
       data: scannedData,
       type: 'url',
     }).then(() => {
-      navigation.navigate('Home');
+      navigation.navigate('List');
     });
   };
 

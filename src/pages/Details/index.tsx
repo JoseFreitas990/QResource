@@ -96,14 +96,9 @@ const Details = () => {
       <View style={styles.informationContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{code.name}</Text>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.share}>
             <Image
-              style={{
-                resizeMode: 'contain',
-                width: 20,
-                height: 20,
-                marginLeft: 5,
-              }}
+              style={styles.shareIcon}
               source={require('../../../assets/share.png')}
             />
           </TouchableOpacity>

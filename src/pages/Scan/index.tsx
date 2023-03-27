@@ -6,9 +6,11 @@ import {
   SafeAreaView,
   Platform,
   StatusBar,
+  Dimensions,
+  Image,
 } from 'react-native';
 import React, { useEffect, useState } from 'react';
-import { Camera, CameraType } from 'expo-camera';
+import { Camera, CameraType, FlashMode } from 'expo-camera';
 import { useIsFocused, useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { ScannerStackParamList } from '../../features/navigation/StackNavigator';
@@ -19,6 +21,8 @@ const Scan = () => {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [scanned, setScanned] = useState<boolean>(false);
+  const [flash, setFlash] = useState(FlashMode.on);
+  const windowHeight = Dimensions.get('screen').height;
 
   const isFocused = useIsFocused();
 
@@ -63,44 +67,47 @@ const Scan = () => {
       </View>
     );
   }
-
   return (
-    <View style={{ flex: 1, justifyContent: 'center' }}>
+    <View style={{ flex: 1, justifyContent: 'center', height: windowHeight }}>
       <Camera
         onBarCodeScanned={scanned ? undefined : onBarCodeScanned}
+        flashMode={flash}
         style={{ flex: 1, paddingTop: 50 }}
       >
-        <View>
-          <View
-            style={{
-              backgroundColor: 'lightcoral',
-              width: 30,
-              height: 30,
-              marginLeft: 15,
-            }}
-          />
-        </View>
         <View
           style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}
         >
           <TouchableOpacity
-            onPress={() => setScanned(false)}
+            onPress={() =>
+              flash == FlashMode.off
+                ? setFlash(FlashMode.torch)
+                : setFlash(FlashMode.off)
+            }
             style={{
-              backgroundColor: 'lightgreen',
-              width: 30,
-              height: 30,
+              alignItems: 'center',
+              width: 60,
               margin: 20,
             }}
-          />
-          <TouchableOpacity
-            onPress={skipScan}
-            style={{
-              backgroundColor: 'lightcoral',
-              width: 30,
-              height: 30,
-              margin: 20,
-            }}
-          />
+          >
+            <Image
+              style={{
+                tintColor: 'white',
+                width: 50,
+                height: 50,
+                resizeMode: 'contain',
+              }}
+              source={
+                flash === FlashMode.torch
+                  ? require('../../../assets/no-flash.png')
+                  : require('../../../assets/flash.png')
+              }
+            />
+            <Text
+              style={{ color: 'white', textAlign: 'center', paddingTop: 5 }}
+            >
+              {flash === FlashMode.torch ? 'Flash off' : 'Flash on'}
+            </Text>
+          </TouchableOpacity>
         </View>
       </Camera>
     </View>

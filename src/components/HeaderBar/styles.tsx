@@ -37,8 +37,9 @@ export default StyleSheet.create({
     marginHorizontal: SIZES.radius,
   },
   icon: {
-    width: SIZES.padding,
-    height: SIZES.padding,
-    backgroundColor: 'lightcoral',
+    width: SIZES.h2,
+    height: SIZES.h2,
+    resizeMode: 'contain',
+    tintColor: COLORS.darkGray,
   },
 });

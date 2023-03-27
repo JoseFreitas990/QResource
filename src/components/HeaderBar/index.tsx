@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   Platform,
   StatusBar,
+  Image,
 } from 'react-native';
 import React, { useState } from 'react';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
@@ -23,7 +24,10 @@ const HeaderBar = (props: Props) => {
     <SafeAreaView style={styles.container}>
       <Text style={styles.header}>QResource</Text>
       <View style={styles.inputContainer}>
-        <View style={styles.icon} />
+        <Image
+          style={styles.icon}
+          source={require('../../../assets/loupe.png')}
+        />
         <TextInput
           value={input}
           onChangeText={(e) => setInput(e)}

@@ -16,7 +16,7 @@ export type ScannerStackParamList = {
 };
 
 export type HomeStackParamList = {
-  Home: undefined;
+  List: undefined;
   Details: { code: ICode };
 };
 
@@ -43,7 +43,7 @@ export function ScannerNavigator() {
 export function HomeNavigator() {
   return (
     <HomeStack.Navigator screenOptions={{ headerShown: false }}>
-      <HomeStack.Screen name="Home" component={Home} />
+      <HomeStack.Screen name="List" component={Home} />
       <HomeStack.Screen name="Details" component={CustomComponent} />
     </HomeStack.Navigator>
   );

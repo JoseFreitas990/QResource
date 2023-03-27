@@ -56,7 +56,7 @@ const Generate = () => {
     });
 
     req.then(() => {
-      navigation.navigate('Home');
+      navigation.navigate('List');
       clearData();
     });
   };
