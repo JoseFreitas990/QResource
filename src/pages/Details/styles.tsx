@@ -1,10 +1,12 @@
-import { Platform, StatusBar, StyleSheet } from 'react-native';
+import { Dimensions, Platform, StatusBar, StyleSheet } from 'react-native';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
+const height = Dimensions.get('window').height;
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
+    // paddingBottom: Platform.OS === 'ios' ? height / 8.5 : height / 10,
   },
 
   QRContainer: {
@@ -27,10 +29,22 @@ export default StyleSheet.create({
   },
   titleContainer: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   title: {
     fontSize: SIZES.h1 * 1.3,
     fontWeight: '600',
+  },
+  share: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  shareIcon: {
+    resizeMode: 'contain',
+    width: 30,
+    height: 30,
+    marginLeft: 5,
   },
   buttonsContainer: {
     width: '100%',
