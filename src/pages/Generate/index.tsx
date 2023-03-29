@@ -78,6 +78,7 @@ const Generate = () => {
           data={typeOfObjectsToGenerate}
           keyExtractor={(item) => item.title}
           horizontal
+          showsHorizontalScrollIndicator={false}
           renderItem={({ item }) => {
             const active = activeType === item.type;
             return (
@@ -90,8 +91,8 @@ const Generate = () => {
                     style={styles.linearContainer}
                     colors={
                       active
-                        ? [COLORS.red, COLORS.primary]
-                        : [COLORS.lightGray, COLORS.silver]
+                        ? [COLORS.yellow, COLORS.red]
+                        : [COLORS.white, COLORS.silver]
                     }
                   >
                     <Image
