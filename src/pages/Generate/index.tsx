@@ -5,6 +5,7 @@ import {
   TouchableOpacity,
   ScrollView,
   KeyboardAvoidingView,
+  Image,
 } from 'react-native';
 import React, { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
@@ -28,6 +29,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
 import TextInputCustom from '../../components/TextInputCustom';
 import Button from '../../components/Button';
+import { Shadow } from 'react-native-shadow-2';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -77,18 +79,39 @@ const Generate = () => {
           keyExtractor={(item) => item.title}
           horizontal
           renderItem={({ item }) => {
+            const active = activeType === item.type;
             return (
               <TouchableOpacity
                 style={styles.itemTypeContainer}
                 onPress={() => setActiveType(item.type)}
               >
-                <LinearGradient
-                  style={styles.linearContainer}
-                  colors={[COLORS.red, COLORS.black]}
-                >
-                  <View style={styles.icon}></View>
-                  <Text style={styles.typeText}>{item.title}</Text>
-                </LinearGradient>
+                <Shadow distance={4} offset={[2, 3]}>
+                  <LinearGradient
+                    style={styles.linearContainer}
+                    colors={
+                      active
+                        ? [COLORS.red, COLORS.primary]
+                        : [COLORS.lightGray, COLORS.silver]
+                    }
+                  >
+                    <Image
+                      source={item.image}
+                      style={[
+                        styles.icon,
+                        {
+                          tintColor: active ? COLORS.white : COLORS.black,
+                        },
+                      ]}
+                    />
+                    <Text
+                      style={{
+                        color: active ? COLORS.white : COLORS.black,
+                      }}
+                    >
+                      {item.title}
+                    </Text>
+                  </LinearGradient>
+                </Shadow>
               </TouchableOpacity>
             );
           }}

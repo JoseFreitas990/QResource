@@ -9,20 +9,24 @@ export default StyleSheet.create({
       Platform.OS === 'ios' ? SIZES.height / 7.5 : SIZES.height / 10,
   },
   itemTypeContainer: {
-    paddingVertical: SIZES.h1,
+    paddingTop: SIZES.h2,
+    paddingBottom: SIZES.h4,
     paddingHorizontal: SIZES.h3,
+    borderRadius: SIZES.radius,
   },
   linearContainer: {
     height: 85,
     width: 70,
     alignItems: 'center',
+    borderRadius: SIZES.radius,
+
     justifyContent: 'center',
   },
   icon: {
-    width: 40,
-    height: 40,
-    backgroundColor: 'white',
+    width: 35,
+    height: 35,
     marginBottom: 5,
+    tintColor: 'white',
   },
   typeText: {
     color: 'white',
