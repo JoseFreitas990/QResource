@@ -17,7 +17,6 @@ const SmsGen = () => {
         <Text>To</Text>
         <TextInput
           placeholder="To"
-          multiline
           keyboardType="phone-pad"
           value={to}
           onChange={(e) => setTo(e.nativeEvent.text)}

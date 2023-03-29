@@ -23,16 +23,6 @@ import CodeCard from '../../components/CodeCard';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
-const codeExample: ICode[] = [
-  {
-    data: '15151',
-    date: new Date(),
-    id: 15,
-    name: 'bqbqbq',
-    type: '15',
-  },
-];
-
 const Home = () => {
   const [codes, setCodes] = useState([]);
   const isFocused = useIsFocused();

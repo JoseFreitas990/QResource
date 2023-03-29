@@ -3,8 +3,8 @@ import {
   Text,
   SafeAreaView,
   TouchableOpacity,
-  Button,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import React, { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
@@ -14,7 +14,6 @@ import TelGen from '../../features/generateRender/TelGen';
 import SmsGen from '../../features/generateRender/SmsGen';
 import TextGen from '../../features/generateRender/TextGen';
 import CodeService from '../../services/code.service';
-import { ICode } from '../../types';
 import { useNavigation } from '@react-navigation/native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { HomeStackParamList } from '../../features/navigation/StackNavigator';
@@ -26,8 +25,9 @@ import GeoGen from '../../features/generateRender/GeoGen';
 import { HeaderBar } from '../../components';
 import styles from './styles';
 import { LinearGradient } from 'expo-linear-gradient';
-import { COLORS } from '../../constants/GlobalStyles';
+import { COLORS, SIZES } from '../../constants/GlobalStyles';
 import TextInputCustom from '../../components/TextInputCustom';
+import Button from '../../components/Button';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -71,39 +71,46 @@ const Generate = () => {
     <View style={styles.container}>
       <HeaderBar input={''} setInput={() => ''} />
       <Text>Aqui {generatingData}</Text>
-      <FlatList
-        data={typeOfObjectsToGenerate}
-        keyExtractor={(item) => item.title}
-        horizontal
-        renderItem={({ item }) => {
-          return (
-            <TouchableOpacity
-              style={styles.itemTypeContainer}
-              onPress={() => setActiveType(item.type)}
-            >
-              <LinearGradient
-                style={styles.linearContainer}
-                colors={[COLORS.red, COLORS.black]}
+      <View>
+        <FlatList
+          data={typeOfObjectsToGenerate}
+          keyExtractor={(item) => item.title}
+          horizontal
+          renderItem={({ item }) => {
+            return (
+              <TouchableOpacity
+                style={styles.itemTypeContainer}
+                onPress={() => setActiveType(item.type)}
               >
-                <View style={styles.icon}></View>
-                <Text style={styles.typeText}>{item.title}</Text>
-              </LinearGradient>
-            </TouchableOpacity>
-          );
-        }}
-      />
-      <ScrollView>
+                <LinearGradient
+                  style={styles.linearContainer}
+                  colors={[COLORS.red, COLORS.black]}
+                >
+                  <View style={styles.icon}></View>
+                  <Text style={styles.typeText}>{item.title}</Text>
+                </LinearGradient>
+              </TouchableOpacity>
+            );
+          }}
+        />
+      </View>
+      <ScrollView style={{ flex: 0.6 }}>
         <TextInputCustom
           placeholder="Title"
           value={title}
           onChange={(e) => setTitle(e.nativeEvent.text)}
         />
-
         {renderThisType()}
 
-        <Button title="Generate" onPress={generateCode} />
-        <Button title="Generate" onPress={generateCode} />
-        <Button title="Generate" onPress={generateCode} />
+        <Button
+          label="Generate"
+          onPress={() => console.log('hello')}
+          style={{
+            width: '80%',
+            alignSelf: 'center',
+            marginVertical: SIZES.padding,
+          }}
+        />
       </ScrollView>
     </View>
   );

@@ -30,6 +30,7 @@ const EmailGen = () => {
         value={subject}
       />
       <TextInputCustom
+        multiline
         onChange={(e) => setBody(e.nativeEvent.text)}
         placeholder="Body"
         value={body}

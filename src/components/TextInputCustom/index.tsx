@@ -21,12 +21,13 @@ interface TextInputProps {
 }
 
 const TextInputCustom = (props: TextInputProps) => {
-  const { placeholder, onChange, keyboardType } = props;
+  const { placeholder, onChange, keyboardType, multiline } = props;
   return (
     <View style={style.container}>
       <Text style={style.title}>{placeholder}</Text>
       <Shadow style={style.inputContainer}>
         <TextInput
+          multiline={multiline}
           onChange={onChange}
           style={style.input}
           placeholder={placeholder}

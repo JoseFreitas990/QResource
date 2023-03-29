@@ -4,15 +4,13 @@ const height = Dimensions.get('window').height;
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: 'yellow',
-    height: '100%',
+    flex: 1,
     paddingBottom:
       Platform.OS === 'ios' ? SIZES.height / 7.5 : SIZES.height / 10,
   },
   itemTypeContainer: {
-    paddingVertical: SIZES.padding,
+    paddingVertical: SIZES.h1,
     paddingHorizontal: SIZES.h3,
-    flex: 1,
   },
   linearContainer: {
     height: 85,

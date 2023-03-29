@@ -5,20 +5,25 @@ import styles from './styles';
 interface ButtonProps {
   label: string;
   secondary?: boolean;
+  onPress: () => void;
+  style: any;
 }
 
 const Button = (props: ButtonProps) => {
-  const { label, secondary } = props;
+  const { label, secondary, onPress, style } = props;
 
   if (secondary) {
     return (
-      <TouchableOpacity style={styles.buttonContainerSecondary}>
+      <TouchableOpacity
+        onPress={onPress}
+        style={[styles.buttonContainerSecondary, style]}
+      >
         <Text style={styles.textSecondary}>{label}</Text>
       </TouchableOpacity>
     );
   }
   return (
-    <TouchableOpacity style={styles.buttonContainer}>
+    <TouchableOpacity onPress={onPress} style={[styles.buttonContainer, style]}>
       <Text style={styles.text}>{label}</Text>
     </TouchableOpacity>
   );
