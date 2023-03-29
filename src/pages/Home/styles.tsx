@@ -6,6 +6,6 @@ export const style = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     paddingBottom:
-      Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 10,
+      Platform.OS === 'ios' ? SIZES.height / 7.5 : SIZES.height / 10,
   },
 });

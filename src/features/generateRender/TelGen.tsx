@@ -6,24 +6,20 @@ import TextInputCustom from '../../components/TextInputCustom';
 
 const TelGen = () => {
   const { updateData } = useStore();
-  const [tel, setTele] = useState('');
+  const [tele, setTele] = useState('');
 
   useEffect(() => {
-    updateData(`tel:${removeWhiteSpaces(tel)}`);
-  }, [tel]);
+    updateData(`tel:${removeWhiteSpaces(tele)}`);
+  }, [tele]);
 
   return (
-    <View style={{ paddingTop: 20 }}>
-      <TextInputCustom placeholder="Telephone" />
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Telephone</Text>
-        <TextInput
-          placeholder="Tel"
-          value={tel}
-          keyboardType="phone-pad"
-          onChange={(e) => setTele(e.nativeEvent.text)}
-        />
-      </View>
+    <View>
+      <TextInputCustom
+        onChange={(e) => setTele(e.nativeEvent.text)}
+        placeholder="Telephone"
+        value={tele}
+        keyboardType={'phone-pad'}
+      />
     </View>
   );
 };

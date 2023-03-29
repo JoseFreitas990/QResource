@@ -1,12 +1,12 @@
 import { Dimensions, Platform, StatusBar, StyleSheet } from 'react-native';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
-const height = Dimensions.get('window').height;
 
 export default StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'white',
-    paddingBottom: Platform.OS === 'ios' ? height / 8.5 : height / 10,
+    paddingBottom:
+      Platform.OS === 'ios' ? SIZES.height / 7.5 : SIZES.height / 10,
   },
 
   QRContainer: {

@@ -1,24 +1,38 @@
-import { View, TextInput, KeyboardType, Text } from 'react-native';
+import {
+  View,
+  TextInput,
+  KeyboardType,
+  Text,
+  TextInputChangeEventData,
+  NativeSyntheticEvent,
+} from 'react-native';
 import style from './styles';
 import React from 'react';
+import { Shadow } from 'react-native-shadow-2';
 
 interface TextInputProps {
   placeholder: string;
   setInput?: (value: string | number) => void;
   multiline?: boolean;
   value?: string;
-  onChange?: (value: string | number) => void;
+
+  onChange?(e: NativeSyntheticEvent<TextInputChangeEventData>): void;
   keyboardType?: KeyboardType;
 }
 
 const TextInputCustom = (props: TextInputProps) => {
-  const { placeholder } = props;
+  const { placeholder, onChange, keyboardType } = props;
   return (
     <View style={style.container}>
       <Text style={style.title}>{placeholder}</Text>
-      <View style={style.inputContainer}>
-        <TextInput style={style.input} placeholder={placeholder} />
-      </View>
+      <Shadow style={style.inputContainer}>
+        <TextInput
+          onChange={onChange}
+          style={style.input}
+          placeholder={placeholder}
+          keyboardType={keyboardType}
+        />
+      </Shadow>
     </View>
   );
 };

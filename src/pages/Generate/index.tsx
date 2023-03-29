@@ -4,6 +4,7 @@ import {
   SafeAreaView,
   TouchableOpacity,
   Button,
+  ScrollView,
 } from 'react-native';
 import React, { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
@@ -26,6 +27,7 @@ import { HeaderBar } from '../../components';
 import styles from './styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../../constants/GlobalStyles';
+import TextInputCustom from '../../components/TextInputCustom';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -34,7 +36,7 @@ const Generate = () => {
   const { generatingData, clearData } = useStore();
   const [activeType, setActiveType] = useState(CODE_TYPES.TEL);
 
-  const [name, setName] = useState<string>('abba');
+  const [title, setTitle] = useState<string>('');
 
   function renderThisType() {
     if (activeType === CODE_TYPES.TEL) {
@@ -54,7 +56,7 @@ const Generate = () => {
 
   const generateCode = async () => {
     const req = CodeService.addData({
-      name,
+      name: title,
       data: generatingData,
       type: activeType,
     });
@@ -66,7 +68,7 @@ const Generate = () => {
   };
 
   return (
-    <View>
+    <View style={styles.container}>
       <HeaderBar input={''} setInput={() => ''} />
       <Text>Aqui {generatingData}</Text>
       <FlatList
@@ -90,8 +92,19 @@ const Generate = () => {
           );
         }}
       />
-      {renderThisType()}
-      <Button title="Generate" onPress={generateCode} />
+      <ScrollView>
+        <TextInputCustom
+          placeholder="Title"
+          value={title}
+          onChange={(e) => setTitle(e.nativeEvent.text)}
+        />
+
+        {renderThisType()}
+
+        <Button title="Generate" onPress={generateCode} />
+        <Button title="Generate" onPress={generateCode} />
+        <Button title="Generate" onPress={generateCode} />
+      </ScrollView>
     </View>
   );
 };

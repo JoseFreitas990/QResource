@@ -3,6 +3,12 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 const height = Dimensions.get('window').height;
 
 export default StyleSheet.create({
+  container: {
+    backgroundColor: 'yellow',
+    height: '100%',
+    paddingBottom:
+      Platform.OS === 'ios' ? SIZES.height / 7.5 : SIZES.height / 10,
+  },
   itemTypeContainer: {
     paddingVertical: SIZES.padding,
     paddingHorizontal: SIZES.h3,

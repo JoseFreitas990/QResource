@@ -1,5 +1,5 @@
 import { Platform, StatusBar, StyleSheet } from 'react-native';
-import { COLORS } from '../../constants/GlobalStyles';
+import { COLORS, SIZES } from '../../constants/GlobalStyles';
 
 export default StyleSheet.create({
   container: {
@@ -8,6 +8,7 @@ export default StyleSheet.create({
     justifyContent: 'flex-start',
     alignItems: 'center',
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+    paddingBottom:
+      Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 10,
   },
 });

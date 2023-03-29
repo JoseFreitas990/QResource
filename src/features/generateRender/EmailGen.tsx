@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { TextInput } from 'react-native-gesture-handler';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
+import TextInputCustom from '../../components/TextInputCustom';
 
 const EmailGen = () => {
   const { updateData } = useStore();
@@ -18,33 +19,21 @@ const EmailGen = () => {
 
   return (
     <View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>To</Text>
-        <TextInput
-          placeholder="To"
-          multiline
-          value={to}
-          onChange={(e) => setTo(e.nativeEvent.text)}
-        />
-      </View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Subject</Text>
-        <TextInput
-          placeholder="Subject"
-          multiline
-          value={subject}
-          onChange={(e) => setSubject(e.nativeEvent.text)}
-        />
-      </View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Body</Text>
-        <TextInput
-          placeholder="Body"
-          multiline
-          value={body}
-          onChange={(e) => setBody(e.nativeEvent.text)}
-        />
-      </View>
+      <TextInputCustom
+        onChange={(e) => setTo(e.nativeEvent.text)}
+        placeholder="To"
+        value={to}
+      />
+      <TextInputCustom
+        onChange={(e) => setSubject(e.nativeEvent.text)}
+        placeholder="Subject"
+        value={subject}
+      />
+      <TextInputCustom
+        onChange={(e) => setBody(e.nativeEvent.text)}
+        placeholder="Body"
+        value={body}
+      />
     </View>
   );
 };
