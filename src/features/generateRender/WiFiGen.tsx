@@ -2,6 +2,7 @@ import { View, Text, Switch, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
 import { removeWhiteSpaces } from '../../utils/utils';
+import TextInputCustom from '../../components/TextInputCustom';
 
 const WifiGen = () => {
   const { updateData } = useStore();
@@ -20,35 +21,28 @@ const WifiGen = () => {
 
   return (
     <View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>name</Text>
-        <TextInput
-          placeholder="To"
-          multiline
-          value={name}
-          onChange={(e) => setName(e.nativeEvent.text)}
-        />
-      </View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>password</Text>
-        <TextInput
-          placeholder="Subject"
-          multiline
-          value={password}
-          onChange={(e) => setPassword(e.nativeEvent.text)}
-        />
-      </View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Network Type</Text>
-        <TextInput placeholder="Body" multiline value={type} />
-      </View>
-      {/*  TODO: NETWORK TYPE */}
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Visibility</Text>
-        <Text>{visible ? 'Visible' : 'Hidden'}</Text>
+      <TextInputCustom
+        onChange={(e) => setName(e.nativeEvent.text)}
+        placeholder="WiFi Name"
+        value={name}
+      />
+      <TextInputCustom
+        onChange={(e) => setPassword(e.nativeEvent.text)}
+        placeholder="Password"
+        value={name}
+      />
+      {/* // TODO  */}
+      <TextInputCustom
+        onChange={(e) => setType('WEP')}
+        placeholder="Network Type"
+        value={name}
+      />
 
-        <Switch value={visible} onChange={() => setVisible(!visible)} />
-      </View>
+      {/* // TODO: NETWORK TYPE */}
+      <Text>Visibility</Text>
+      <Text>{visible ? 'Visible' : 'Hidden'}</Text>
+
+      <Switch value={visible} onChange={() => setVisible(!visible)} />
     </View>
   );
 };

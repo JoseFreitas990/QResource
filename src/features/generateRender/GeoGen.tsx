@@ -1,6 +1,7 @@
 import { View, Text, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
+import TextInputCustom from '../../components/TextInputCustom';
 
 const GeoGen = () => {
   const { updateData } = useStore();
@@ -13,26 +14,18 @@ const GeoGen = () => {
   }, [lat, lon]);
   return (
     <View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Latitude</Text>
-        <TextInput
-          placeholder="Latitude"
-          multiline
-          keyboardType="decimal-pad"
-          value={lat}
-          onChange={(e) => setLat(e.nativeEvent.text)}
-        />
-      </View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Longitude</Text>
-        <TextInput
-          placeholder="Longitude"
-          multiline
-          keyboardType="numbers-and-punctuation"
-          value={lon}
-          onChange={(e) => setLon(e.nativeEvent.text)}
-        />
-      </View>
+      <TextInputCustom
+        onChange={(e) => setLat(e.nativeEvent.text)}
+        placeholder="Latitude"
+        keyboardType="decimal-pad"
+        value={lat}
+      />
+      <TextInputCustom
+        onChange={(e) => setLon(e.nativeEvent.text)}
+        placeholder="Longitude"
+        keyboardType="decimal-pad"
+        value={lon}
+      />
     </View>
   );
 };

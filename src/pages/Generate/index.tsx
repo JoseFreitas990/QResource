@@ -65,6 +65,7 @@ const Generate = () => {
 
     req.then(() => {
       navigation.navigate('List');
+      setTitle('');
       clearData();
     });
   };
@@ -128,7 +129,7 @@ const Generate = () => {
 
         <Button
           label="Generate"
-          onPress={() => console.log('hello')}
+          onPress={generateCode}
           style={{
             width: '80%',
             alignSelf: 'center',

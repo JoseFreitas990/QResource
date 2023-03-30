@@ -1,6 +1,7 @@
 import { View, Text, TextInput } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import useStore from '../../hooks/useStore';
+import TextInputCustom from '../../components/TextInputCustom';
 
 const SmsGen = () => {
   const { updateData } = useStore();
@@ -13,24 +14,18 @@ const SmsGen = () => {
   }, [to, body]);
   return (
     <View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>To</Text>
-        <TextInput
-          placeholder="To"
-          keyboardType="phone-pad"
-          value={to}
-          onChange={(e) => setTo(e.nativeEvent.text)}
-        />
-      </View>
-      <View style={{ paddingVertical: 10, backgroundColor: 'coral' }}>
-        <Text>Subject</Text>
-        <TextInput
-          placeholder="Subject"
-          multiline
-          value={body}
-          onChange={(e) => setBody(e.nativeEvent.text)}
-        />
-      </View>
+      <TextInputCustom
+        onChange={(e) => setTo(e.nativeEvent.text)}
+        keyboardType="phone-pad"
+        placeholder="To"
+        value={to}
+      />
+      <TextInputCustom
+        onChange={(e) => setBody(e.nativeEvent.text)}
+        multiline
+        placeholder="Subject"
+        value={body}
+      />
     </View>
   );
 };
