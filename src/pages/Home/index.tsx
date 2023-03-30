@@ -25,29 +25,43 @@ type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
 const Home = () => {
   const [codes, setCodes] = useState([]);
+  const [filterText, setFilterText] = useState('');
+  const [filteredCode, setFilteredCode] = useState([]);
+
   const isFocused = useIsFocused();
   const navigation = useNavigation<HomeScreenProp>();
+
   const getAllCodes = async () => {
     CodeService.findAll().then((response: any) => {
       setCodes(response._array);
     });
   };
 
+  const filterCode = () => {
+    const filteredData = codes.filter((value: ICode) =>
+      value.name.toLowerCase().includes(filterText.toLowerCase())
+    );
+
+    setFilteredCode(filteredData);
+  };
+
+  useEffect(() => {
+    filterCode();
+  }, [filterText]);
   useEffect(() => {
     getAllCodes();
   }, [isFocused]);
 
-  const [filterInput, setFilterInput] = useState('');
   return (
     <View style={style.container}>
-      <HeaderBar input={filterInput} setInput={setFilterInput} />
+      <HeaderBar input={filterText} setInput={setFilterText} />
       <FlatList
         style={{
           width: '90%',
           marginTop: 10,
         }}
         showsHorizontalScrollIndicator={false}
-        data={codes}
+        data={filterText.length === 0 ? codes : filteredCode}
         keyExtractor={(item: ICode) => item.id.toString()}
         renderItem={({ item }) => {
           return (
