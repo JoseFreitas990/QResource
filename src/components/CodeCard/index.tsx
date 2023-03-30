@@ -1,9 +1,11 @@
-import { View, Text } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import React from 'react';
 import styles from './styles';
 import { LinearGradient } from 'expo-linear-gradient';
 import { COLORS } from '../../constants/GlobalStyles';
 import { Shadow } from 'react-native-shadow-2';
+import { typeOfObjectsToGenerate } from '../../constants/generate';
+import getType from '../../utils/getType';
 
 interface CodeCardProps {
   name: string;
@@ -12,6 +14,10 @@ interface CodeCardProps {
 
 const CodeCard = (props: CodeCardProps) => {
   const { name, value } = props;
+  const type = getType(value);
+  const imageValue = typeOfObjectsToGenerate.find(
+    (item) => item.type === type
+  )?.image;
   return (
     <Shadow style={{ width: '100%' }}>
       <LinearGradient
@@ -21,8 +27,9 @@ const CodeCard = (props: CodeCardProps) => {
         style={styles.card}
       >
         <View style={styles.iconContainer}>
-          <Text>a</Text>
+          <Image source={imageValue} style={styles.icon} />
         </View>
+
         <View style={styles.infoContainer}>
           <Text style={styles.name}>{name}</Text>
           <Text numberOfLines={1} ellipsizeMode="tail" style={styles.value}>

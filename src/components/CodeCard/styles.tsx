@@ -26,9 +26,15 @@ export default StyleSheet.create({
     width: '20%',
     alignItems: 'center',
     justifyContent: 'center',
+    paddingLeft: 10,
 
     height: '100%',
     backgroundColor: 'transparent',
+  },
+  icon: {
+    width: 45,
+    height: 45,
+    resizeMode: 'cover',
   },
   name: {
     fontWeight: '600',

@@ -17,7 +17,7 @@ export const typeOfObjectsToGenerate = [
   },
   {
     title: 'Email',
-    type: CODE_TYPES.MATMSG,
+    type: CODE_TYPES.MAILTO,
     image: require('../../assets/email.png'),
   },
   {
