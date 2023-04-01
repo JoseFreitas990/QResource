@@ -6,6 +6,7 @@ import TabNavigator from './src/features/navigation/TabNavigator';
 import * as SQLite from 'expo-sqlite';
 import DatabaseInit from './src/database/init';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { COLORS } from './src/constants/GlobalStyles';
 
 export default function App() {
   useEffect(() => {

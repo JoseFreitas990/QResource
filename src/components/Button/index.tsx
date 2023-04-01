@@ -6,7 +6,7 @@ interface ButtonProps {
   label: string;
   secondary?: boolean;
   onPress: () => void;
-  style: any;
+  style?: any;
 }
 
 const Button = (props: ButtonProps) => {

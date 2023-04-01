@@ -11,4 +11,24 @@ export default StyleSheet.create({
     paddingBottom:
       Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 10,
   },
+  buttonsContainer: {
+    width: '100%',
+    height: '20%',
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-evenly',
+  },
+  buttonPrimary: {
+    backgroundColor: COLORS.yellow,
+    width: 150,
+    paddingHorizontal: 50,
+    alignItems: 'center',
+    paddingVertical: 15,
+  },
+  buttonSecondary: {
+    width: 150,
+    backgroundColor: COLORS.yellow,
+    paddingHorizontal: 50,
+    alignItems: 'center',
+  },
 });

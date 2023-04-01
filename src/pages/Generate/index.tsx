@@ -6,6 +6,7 @@ import {
   ScrollView,
   KeyboardAvoidingView,
   Image,
+  Platform,
 } from 'react-native';
 import React, { useState } from 'react';
 import { FlatList } from 'react-native-gesture-handler';
@@ -30,6 +31,7 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 import TextInputCustom from '../../components/TextInputCustom';
 import Button from '../../components/Button';
 import { Shadow } from 'react-native-shadow-2';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 

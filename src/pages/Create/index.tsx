@@ -1,4 +1,4 @@
-import { Text, SafeAreaView, Button, TextInput } from 'react-native';
+import { Text, SafeAreaView, TextInput, View } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import CodeService from '../../services/code.service';
@@ -9,6 +9,8 @@ import {
   HomeStackParamList,
 } from '../../features/navigation/StackNavigator';
 import getType from '../../utils/getType';
+import Button from '../../components/Button';
+import TextInputCustom from '../../components/TextInputCustom';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -36,18 +38,17 @@ const Create = () => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text>Create</Text>
-      <Text>{scannedData}</Text>
-      <TextInput
-        onChange={(e) => setName(e.nativeEvent.text)}
-        style={{
-          backgroundColor: 'red',
-          height: 20,
-          width: '50%',
-        }}
-      />
-
-      <Button onPress={createCode} title="Criar código" />
+      <Text>Back Arrow</Text>
+      <Text>Title</Text>
+      <Text>Code Type</Text>
+      <TextInputCustom placeholder="Title" />
+      {
+        // TODO: inputsRender
+      }
+      <View style={styles.buttonsContainer}>
+        <Button onPress={() => console.log()} secondary label="Use Code" />
+        <Button onPress={() => function () {}} label="Save Code" />
+      </View>
     </SafeAreaView>
   );
 };

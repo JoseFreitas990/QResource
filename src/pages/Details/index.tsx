@@ -106,7 +106,7 @@ const Details = () => {
       <View style={styles.informationContainer}>
         <View style={styles.titleContainer}>
           <Text style={styles.title}>{code.name}</Text>
-          <TouchableOpacity style={styles.share}>
+          <TouchableOpacity onPress={handleShare} style={styles.share}>
             <Image
               style={styles.shareIcon}
               source={require('../../../assets/share.png')}
@@ -116,8 +116,8 @@ const Details = () => {
         {renderInputs()}
       </View>
       <View style={styles.buttonsContainer}>
-        <Button secondary label="Save to Gallery" />
-        <Button label="Open Link" />
+        <Button onPress={handleSave} secondary label="Save to Gallery" />
+        <Button onPress={() => useCode(code.data)} label="Open Link" />
       </View>
     </View>
   );

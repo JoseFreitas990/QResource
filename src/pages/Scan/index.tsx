@@ -78,6 +78,14 @@ const Scan = () => {
           style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}
         >
           <TouchableOpacity
+            onPress={skipScan}
+            style={{
+              width: 50,
+              height: 50,
+              backgroundColor: 'white',
+            }}
+          />
+          <TouchableOpacity
             onPress={() =>
               flash == FlashMode.off
                 ? setFlash(FlashMode.torch)
@@ -102,6 +110,7 @@ const Scan = () => {
                   : require('../../../assets/flash.png')
               }
             />
+
             <Text
               style={{ color: 'white', textAlign: 'center', paddingTop: 5 }}
             >
