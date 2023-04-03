@@ -27,6 +27,7 @@ const TextInputCustom = (props: TextInputProps) => {
       <Text style={style.title}>{placeholder}</Text>
       <Shadow style={style.inputContainer}>
         <TextInput
+          hitSlop={{ top: 25, bottom: 25, left: 40, right: 40 }}
           multiline={multiline}
           onChange={onChange}
           style={style.input}

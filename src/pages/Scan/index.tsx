@@ -77,14 +77,14 @@ const Scan = () => {
         <View
           style={{ flex: 1, justifyContent: 'center', alignItems: 'flex-end' }}
         >
-          <TouchableOpacity
+          {/* <TouchableOpacity
             onPress={skipScan}
             style={{
               width: 50,
               height: 50,
               backgroundColor: 'white',
             }}
-          />
+          /> */}
           <TouchableOpacity
             onPress={() =>
               flash == FlashMode.off

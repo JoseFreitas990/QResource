@@ -70,7 +70,11 @@ const Details = () => {
   };
 
   function renderInputs() {
-    if (type === CODE_TYPES.MAILTO) return <EmailInputs code={code.data} />;
+    if (type === CODE_TYPES.MAILTO)
+      return <EmailInputs type="MAILTO" code={code.data} />;
+
+    if (type === CODE_TYPES.MATMSG)
+      return <EmailInputs type="MATMSG" code={code.data} />;
 
     if (type === CODE_TYPES.TEL) return <TelInputs code={code.data} />;
 

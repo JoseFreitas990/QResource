@@ -11,12 +11,12 @@ export default StyleSheet.create({
   itemTypeContainer: {
     paddingTop: SIZES.h2,
     paddingBottom: SIZES.h4,
-    paddingHorizontal: SIZES.h3,
+    paddingHorizontal: SIZES.base,
     borderRadius: SIZES.radius,
   },
   linearContainer: {
     height: 85,
-    width: 70,
+    width: 75,
     alignItems: 'center',
     borderRadius: SIZES.radius,
 

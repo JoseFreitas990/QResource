@@ -5,7 +5,7 @@ import {
 import { Generate, Home, Scan } from '../../pages';
 import { HomeNavigator, ScannerNavigator } from './StackNavigator';
 import { COLORS, SIZES } from '../../constants/GlobalStyles';
-import { Image, Text, TouchableOpacity, View } from 'react-native';
+import { Image, Platform, Text, TouchableOpacity, View } from 'react-native';
 
 interface CustomButtonProps {
   onPress: any;
@@ -59,15 +59,18 @@ export default function TabNavigator() {
         tabBarStyle: {
           borderTopWidth: 0,
           elevation: 0,
-
           backgroundColor: COLORS.secondary,
           borderTopLeftRadius: SIZES.h2,
           borderTopRightRadius: SIZES.h2,
+          justifyContent: 'center',
+          flex: 1,
+          display: 'flex',
           minHeight: 55,
           position: 'absolute',
           bottom: 0,
           left: 0,
           right: 0,
+          paddingTop: Platform.OS === 'ios' ? 10 : 0,
         },
       }}
       initialRouteName="Home"
@@ -89,6 +92,7 @@ export default function TabNavigator() {
           ),
           tabBarLabelStyle: {
             color: COLORS.white,
+            marginBottom: Platform.OS === 'ios' ? -10 : 0,
           },
         }}
       />
@@ -118,6 +122,7 @@ export default function TabNavigator() {
           ),
           tabBarLabelStyle: {
             color: COLORS.white,
+            marginBottom: Platform.OS === 'ios' ? -10 : 0,
           },
         }}
       />

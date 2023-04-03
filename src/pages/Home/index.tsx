@@ -9,7 +9,6 @@ import {
 import React, { useEffect, useState } from 'react';
 import { style } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { TextInput } from 'react-native-gesture-handler';
 import { HeaderBar } from '../../components';
 import CodeService from '../../services/code.service';
 import { ICode } from '../../types';
@@ -20,6 +19,15 @@ import {
 } from '../../features/navigation/StackNavigator';
 import { StackNavigationProp } from '@react-navigation/stack';
 import CodeCard from '../../components/CodeCard';
+import {
+  PanGestureHandler,
+  PanGestureHandlerGestureEvent,
+} from 'react-native-gesture-handler';
+import {
+  useAnimatedGestureHandler,
+  useAnimatedStyle,
+  useSharedValue,
+} from 'react-native-reanimated';
 
 type HomeScreenProp = StackNavigationProp<HomeStackParamList>;
 
@@ -57,7 +65,7 @@ const Home = () => {
       <HeaderBar input={filterText} setInput={setFilterText} />
       <FlatList
         style={{
-          width: '90%',
+          width: '100%',
           marginTop: 10,
         }}
         showsHorizontalScrollIndicator={false}

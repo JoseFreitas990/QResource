@@ -34,6 +34,7 @@ const HeaderBar = (props: Props) => {
           onChangeText={(e) => setInput(e)}
           style={styles.input}
           placeholder="Search"
+          hitSlop={{ top: 20, bottom: 20, left: 35, right: 35 }}
         />
         {input && (
           <TouchableOpacity onPress={() => setInput('')} style={styles.icon} />
