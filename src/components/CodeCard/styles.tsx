@@ -7,6 +7,7 @@ export default StyleSheet.create({
     width: '88%',
     height: '100%',
     flexDirection: 'row',
+    zIndex: -1,
   },
   infoContainer: {
     width: '77.5%',

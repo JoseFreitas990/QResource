@@ -47,12 +47,16 @@ const Home = () => {
           [{ nativeEvent: { contentOffset: { y: scrollY } } }],
           { useNativeDriver: true }
         )}
+        style={{ width: '100%' }}
+        contentContainerStyle={{
+          alignItems: 'center',
+        }}
         showsVerticalScrollIndicator={false}
         data={filterText.length === 0 ? codes : filteredCode}
         keyExtractor={(item: ICode) => item.id.toString()}
         renderItem={({ item, index }) => {
           const opacityInputRange = [-1, 0, 100 * index, 100 * (index + 1)];
-          const inputRange = [-1, 0, 125 * index, 125 * (index + 2)];
+          const inputRange = [-1, 0, 100 * index, 125 * (index + 2)];
           const scale = scrollY.interpolate({
             inputRange,
             outputRange: [1, 1, 1, 0],
