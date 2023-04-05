@@ -18,11 +18,6 @@ import {
   PanGestureHandler,
   PanGestureHandlerGestureEvent,
 } from 'react-native-gesture-handler';
-import {
-  useAnimatedGestureHandler,
-  useAnimatedStyle,
-  useSharedValue,
-} from 'react-native-reanimated';
 
 const Home = () => {
   const [codes, setCodes] = useState([]);
@@ -63,16 +58,14 @@ const Home = () => {
       <FlatList
         ref={flatListRef}
         style={{
-          width: '90%',
           marginTop: 10,
         }}
-        showsHorizontalScrollIndicator={false}
+        showsVerticalScrollIndicator={false}
         data={filterText.length === 0 ? codes : filteredCode}
         keyExtractor={(item: ICode) => item.id.toString()}
         renderItem={({ item }) => {
           return (
             <CodeCard
-              simultaneousHandlers={flatListRef}
               code={item}
               name={item.name}
               value={item.data}
