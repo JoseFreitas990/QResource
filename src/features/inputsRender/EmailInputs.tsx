@@ -13,6 +13,7 @@ const EmailInputs = (props: EmailInputProps) => {
   const params =
     type === 'MATMSG' ? getMatMsgToParams(code) : getMailToParams(code);
 
+  console.log(type);
   return (
     <Fragment>
       <InputValue header="To" value={params.to} />
