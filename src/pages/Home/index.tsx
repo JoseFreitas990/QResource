@@ -2,6 +2,7 @@ import { View, Text, Button, ScrollView, TouchableOpacity } from 'react-native';
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { style } from './styles';
 import { SafeAreaView } from 'react-native-safe-area-context';
+import { TextInput } from 'react-native-gesture-handler';
 import { HeaderBar } from '../../components';
 import CodeService from '../../services/code.service';
 import { ICode } from '../../types';
@@ -62,7 +63,7 @@ const Home = () => {
       <FlatList
         ref={flatListRef}
         style={{
-          width: '100%',
+          width: '90%',
           marginTop: 10,
         }}
         showsHorizontalScrollIndicator={false}

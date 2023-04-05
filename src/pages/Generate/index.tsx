@@ -47,7 +47,7 @@ const Generate = () => {
       return <TelGen />;
     } else if (activeType === CODE_TYPES.SMS) {
       return <SmsGen />;
-    } else if (activeType === CODE_TYPES.MAILTO) {
+    } else if (activeType === CODE_TYPES.MATMSG) {
       return <EmailGen />;
     } else if (activeType === CODE_TYPES.URL) {
       return <UrlGen />;

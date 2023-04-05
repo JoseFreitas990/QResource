@@ -4,7 +4,7 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 export default StyleSheet.create({
   card: {
     borderRadius: SIZES.h3,
-    width: '100%',
+    width: '88%',
     height: '100%',
     flexDirection: 'row',
   },

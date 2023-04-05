@@ -1,17 +1,16 @@
 import { View, Text } from 'react-native';
 import React, { Fragment } from 'react';
 import InputValue from '../../components/InputValue';
-import { getMailToParams, getMatMsgToParams } from '../../utils/getTypeParams';
+import { getMailToParams } from '../../utils/getTypeParams';
 
 interface EmailInputProps {
   code: string;
-  type?: 'MAILTO' | 'MATMSG';
+  type?: string;
 }
 const EmailInputs = (props: EmailInputProps) => {
-  const { code, type } = props;
+  const { code } = props;
 
-  const params =
-    type === 'MATMSG' ? getMatMsgToParams(code) : getMailToParams(code);
+  const params = getMailToParams(code);
 
   console.log(type);
   return (

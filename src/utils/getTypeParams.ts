@@ -85,8 +85,6 @@ function getMatMsgToParams(data: string): IMail {
 
   let body = data.substring(data.indexOf(';BODY:') + 6, data.lastIndexOf(';;'));
 
-  console.log(to, subject, body);
-
   return { to, subject, body };
 }
 

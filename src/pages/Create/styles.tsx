@@ -3,28 +3,13 @@ import { COLORS, SIZES } from '../../constants/GlobalStyles';
 
 export default StyleSheet.create({
   container: {
-    flexDirection: 'column',
-    justifyContent: 'space-between',
-    flex: 1,
-    paddingBottom:
-      Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 12,
-  },
-  informationContainer: {
-    display: 'flex',
+    width: '100%',
     flexDirection: 'column',
     justifyContent: 'flex-start',
     alignItems: 'center',
-  },
-  title: {
-    paddingTop: SIZES.padding,
-    fontSize: SIZES.h1 * 1.2,
-    fontWeight: '700',
-    paddingBottom: SIZES.base,
-  },
-  codeType: {
-    color: COLORS.primary,
-    fontSize: SIZES.h3,
-    paddingBottom: SIZES.padding,
+    flex: 1,
+    paddingBottom:
+      Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 10,
   },
   buttonsContainer: {
     width: '100%',
@@ -32,7 +17,6 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
-    paddingBottom: Platform.OS === 'ios' ? SIZES.height / 12 : 0,
   },
   buttonPrimary: {
     backgroundColor: COLORS.yellow,
