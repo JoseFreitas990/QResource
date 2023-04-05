@@ -71,7 +71,8 @@ function getMailToParams(data: string): IMail {
 
   let body = data.substring(data.indexOf('&body=') + 6);
 
-  console.log(to, subject, body);
+  console.log(data);
+
   return { to, subject, body };
 }
 

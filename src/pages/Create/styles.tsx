@@ -5,11 +5,22 @@ export default StyleSheet.create({
   container: {
     width: '100%',
     flexDirection: 'column',
-    justifyContent: 'flex-start',
-    alignItems: 'center',
+    justifyContent: 'space-between',
     flex: 1,
     paddingBottom:
       Platform.OS === 'ios' ? SIZES.height / 8.5 : SIZES.height / 10,
+  },
+  infoContainer: {
+    alignItems: 'center',
+  },
+  codeType: {
+    fontSize: SIZES.h1 * 1.2,
+    fontWeight: '700',
+    marginTop: 25,
+  },
+  moto: {
+    marginVertical: 10,
+    color: COLORS.primary,
   },
   buttonsContainer: {
     width: '100%',
@@ -17,6 +28,8 @@ export default StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'space-evenly',
+    paddingBottom:
+      Platform.OS === 'ios' ? SIZES.height / 10 : SIZES.height / 12,
   },
   buttonPrimary: {
     backgroundColor: COLORS.yellow,

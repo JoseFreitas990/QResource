@@ -11,6 +11,11 @@ export const typeOfObjectsToGenerate = [
     image: require('../../assets/telephone.png'),
   },
   {
+    title: 'Email',
+    type: CODE_TYPES.MATMSG,
+    image: require('../../assets/email.png'),
+  },
+  {
     title: 'Text',
     type: CODE_TYPES.TEXT,
     image: require('../../assets/text.png'),

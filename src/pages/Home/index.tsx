@@ -14,6 +14,8 @@ const Home = () => {
   const [filteredCode, setFilteredCode] = useState([]);
   const scrollY = useRef(new Animated.Value(0)).current;
 
+  const [deleteCodes, setDeleteCodes] = useState([]);
+
   const isFocused = useIsFocused();
 
   const getAllCodes = async () => {
