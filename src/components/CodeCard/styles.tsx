@@ -9,7 +9,7 @@ export default StyleSheet.create({
     flexDirection: 'row',
   },
   infoContainer: {
-    width: '80%',
+    width: '77.5%',
     borderTopLeftRadius: 35,
     borderBottomLeftRadius: 35,
     borderColor: COLORS.black,
@@ -23,7 +23,7 @@ export default StyleSheet.create({
     backgroundColor: COLORS.white,
   },
   iconContainer: {
-    width: '20%',
+    width: '22.5%',
     alignItems: 'center',
     justifyContent: 'center',
     paddingLeft: 10,

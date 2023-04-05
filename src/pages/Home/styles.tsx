@@ -5,7 +5,6 @@ export const style = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingBottom:
-      Platform.OS === 'ios' ? SIZES.height / 7.5 : SIZES.height / 10,
+    marginBottom: Platform.OS === 'ios' ? SIZES.height / 10 : SIZES.height / 10,
   },
 });
