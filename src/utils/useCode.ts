@@ -58,17 +58,15 @@ function useSmsCode(code: string) {
 
 function useGeoCode(code: string) {
   let codeParams = getGeoParams(code);
-  const scheme = Platform.select({
-    ios: 'maps:0,0?q=',
-    android: 'geo:0,0?q=',
-  });
+
+  var scheme = Platform.OS === 'ios' ? 'maps:' : 'geo:';
   let lat = codeParams.latitude;
   let long = codeParams.longitude;
 
   const latLng = `${lat},${long}`;
   const label = 'Scanned location';
   const url = Platform.select({
-    ios: `${scheme}${label}@${latLng}`,
+    ios: `${scheme}${label},${latLng}`,
     android: `${scheme}${latLng}(${label})`,
   });
 
